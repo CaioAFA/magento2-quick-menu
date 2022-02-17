@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Caio\SpeedDial\Api\ItemRepositoryInterface" type="Caio\SpeedDial\Model\ItemRepository"/>
+	<preference for="Caio\SpeedDial\Api\Data\ItemInterface" type="Caio\SpeedDial\Model\Data\Item"/>
+	<preference for="Caio\SpeedDial\Api\Data\ItemSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Caio\SpeedDial\Model\ResourceModel\Item\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">caio_speeddial_item</argument>
+			<argument name="resourceModel" xsi:type="string">Caio\SpeedDial\Model\ResourceModel\Item\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="caio_speeddial_item_listing_data_source" xsi:type="string">Caio\SpeedDial\Model\ResourceModel\Item\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+</config>
