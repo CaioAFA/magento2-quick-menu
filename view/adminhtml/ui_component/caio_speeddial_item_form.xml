@@ -104,5 +104,22 @@
 				</validation>
 			</settings>
 		</field>
+
+		<field name="position" formElement="input" sortOrder="50">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">item</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Posição</label>
+				<dataScope>position</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+					<rule name="validate-number" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+		</field>
 	</fieldset>
 </form>

@@ -1,0 +1,54 @@
+.speed-dial-wrapper{
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+	z-index: 99999999;
+
+	display: flex;
+	justify-content: end;
+	align-items: end;
+	width: 60px;
+}
+
+#speed-dial-main-icon{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	background: gray;
+	border-radius: 50px;
+
+	z-index: 20;
+
+	cursor: pointer;
+}
+
+#speed-dial-main-icon img{
+	border-radius: 100px;
+	width: 60px;
+	height: 60px;
+}
+
+#speed-dial-items{
+	position: relative;
+}
+
+.speed-dial-item{
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	cursor: pointer;
+
+	transition: .5s bottom ease;
+}
+
+.speed-dial-item-img{
+	z-index: 10;
+	background: white;
+	border-radius: 50px;
+}

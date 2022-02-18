@@ -48,6 +48,14 @@ class InstallSchema implements InstallSchemaInterface
         );
 
         $table_caio_speeddial_item->addColumn(
+            'position',
+            \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
+            null,
+            ['nullable' => true],
+            'Position'
+        );
+
+        $table_caio_speeddial_item->addColumn(
             'background',
             \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
             null,
