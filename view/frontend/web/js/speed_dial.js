@@ -4,11 +4,11 @@ define([
     '@popperjs/core',
     'Caio_SpeedDial/js/libs/tippy',
 ], function(Component, ko, popper, tippy){
-    const ICONS_MARGIN = 68
-    const SPEED_DIAL_ITEMS_HEIGHT = 60
-    const SPEED_DIAL_ITEMS_WIDTH = 60
-
     const tooltips = []
+
+    var ICONS_MARGIN 
+    var SPEED_DIAL_ITEMS_HEIGHT
+    var SPEED_DIAL_ITEMS_WIDTH
 
     return Component.extend({
         items: ko.observable(window.speedDialItems),
@@ -21,14 +21,27 @@ define([
             return this.items()
         },
 
-        texte: function(){
-            alert('isndiasndi')
+        isModuleEnabled: function(){
+            const isEnabled = window.speedDialConfig.isEnabled != 0 ? true : false
+            return isEnabled
         },
 
         initSpeedDial: function(){
+            ICONS_MARGIN = window.speedDialConfig.iconsMargin
+            SPEED_DIAL_ITEMS_HEIGHT = window.speedDialConfig.iconSize
+            SPEED_DIAL_ITEMS_WIDTH = window.speedDialConfig.iconSize
+        
+            const speedDialWrapper = this.getSpeedDialWrapper()
+            speedDialWrapper.style.width = `${SPEED_DIAL_ITEMS_WIDTH}px`
+
             const speedDialItemsWrapper = this.getSpeedDialItemsWrapper()
             const items = this.getSpeedDialItems()
             const itemsImgs = this.getSpeedDialItemsImgs()
+            
+            const speedDialMainIconImg = this.getSpeedDialMainIconImg()
+            speedDialMainIconImg.style.width = SPEED_DIAL_ITEMS_WIDTH
+            speedDialMainIconImg.style.height = SPEED_DIAL_ITEMS_HEIGHT
+
             speedDialItemsWrapper.style.height = `${ICONS_MARGIN * (items.length + 1)}px`
         
             const mainIcon = this.getMainIcon()
@@ -49,7 +62,7 @@ define([
         
         showSpeedDialItems: function(){
             const items = this.getSpeedDialItems()
-        
+
             for(let i = 0; i < items.length; i++){
                 items[i].style.bottom = `${ICONS_MARGIN * (i + 1)}px`
             }
@@ -96,9 +109,17 @@ define([
         openLink: (el) => {
             window.open(el.target.dataset.link).focus()
         },
+
+        getSpeedDialWrapper: function(){
+            return document.getElementById('speed-dial-wrapper')
+        },
         
         getSpeedDialItemsWrapper: function(){
             return document.getElementById('speed-dial-items')
+        },
+
+        getSpeedDialMainIconImg: function(){
+            return document.querySelector('#speed-dial-main-icon img')
         },
         
         getSpeedDialItems: function(){

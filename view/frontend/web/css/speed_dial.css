@@ -1,4 +1,4 @@
-.speed-dial-wrapper{
+#speed-dial-wrapper{
 	position: fixed;
 	bottom: 10px;
 	right: 10px;
@@ -25,8 +25,6 @@
 
 #speed-dial-main-icon img{
 	border-radius: 100px;
-	width: 60px;
-	height: 60px;
 }
 
 #speed-dial-items{

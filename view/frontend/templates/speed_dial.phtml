@@ -1,5 +1,3 @@
-<?= print_r($this->getSpeedDialItems(), true) ?>
-
 <div id="speed_dial" data-bind="scope: 'speed_dial'">
   <!-- ko template: getTemplate() -->
   <!-- /ko -->
@@ -15,6 +13,7 @@
 
   <script>
     window.speedDialItems = <?= $this->getSpeedDialItems() ?>;
+    window.speedDialConfig = <?= $this->getSpeedDialConfigurations() ?>;
   </script>
 
   <script>

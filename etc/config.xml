@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+  <default>
+    <speed_dial>
+      <general>
+        <enable>0</enable>
+        <icon_size>50</icon_size>
+        <icons_margin>68</icons_margin>
+        <left_distance>25</left_distance>
+        <bottom_distance>25</bottom_distance>
+      </general>
+    </speed_dial>
+  </default>
+</config>

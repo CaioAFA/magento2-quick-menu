@@ -1,29 +1,46 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
-  <system>
-    <tab id="caio" translate="label" sortOrder="10">
-      <label>Caio</label>
-    </tab>
+	<system>
 
-    <section id="speed_dial" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
-      <class>separator-top</class>
-      <label>Speed Dial</label>
-      <tab>caio</tab>
+		<tab id="caio" translate="label" sortOrder="10">
+			<label>Caio</label>
+		</tab>
 
-      <resource>Caio_SpeedDial::config</resource>
+		<section id="speed_dial" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+			<class>separator-top</class>
+			<label>Speed Dial</label>
+			<tab>caio</tab>
+			<resource>Caio_SpeedDial::item</resource>
 
       <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
-        <label>General Configuration</label>
+				<label>Configurações Gerais</label>
+				
+				<field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+					<label>Ativado</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
 
-        <field id="responsiveItems" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
-          <label>Responsive Items</label>
-          <frontend_model>Caio\SpeedDial\Block\Adminhtml\Form\SpeedDial</frontend_model>
-          <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
-          <comment>Object containing responsive options. Breakpoint set screen width and item set number of items visible starting from breakpoint width</comment>
-        </field>
+        <field id="icon_size" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+					<label>Tamanho do Ícone (em px)</label>
+          <validate>integer</validate>
+				</field>
+
+        <field id="icons_margin" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+					<label>Margem entre os ícones (em px)</label>
+          <validate>integer</validate>
+				</field>
+
+        <field id="left_distance" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+					<label>Distância (em px) do lado esquerdo da tela</label>
+          <validate>integer</validate>
+				</field>
+
+        <field id="bottom_distance" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+					<label>Distância (em px) da parte de baixo da tela</label>
+          <validate>integer</validate>
+				</field>
 
       </group>
-    </section>
-
-  </system>
+		</section>
+	</system>
 </config>

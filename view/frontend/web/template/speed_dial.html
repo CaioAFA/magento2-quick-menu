@@ -1,23 +1,25 @@
-<div class="speed-dial-wrapper" data-bind="event: { mouseleave: hideSpeedDialItems }">
-  <div id="speed-dial-main-icon" data-bind="event: { mouseover: showSpeedDialItems }">
-    <img src="https://www.pngfind.com/pngs/m/345-3457171_magento-logo-png-transparent-magento-2-logo-svg.png">
+<!-- ko if: isModuleEnabled() -->
+  <div id="speed-dial-wrapper" data-bind="event: { mouseleave: hideSpeedDialItems }">
+    <div id="speed-dial-main-icon" data-bind="event: { mouseover: showSpeedDialItems }">
+      <img src="https://www.pngfind.com/pngs/m/345-3457171_magento-logo-png-transparent-magento-2-logo-svg.png">
+    </div>
+
+    <div id="speed-dial-items">
+      <!-- ko foreach: { data: getItems(), as: 'item' } -->
+        <div
+          attr="'data-text': item.text"
+          class="speed-dial-item"
+        >
+          <img attr="src: item.image_link, alt: item.text, 'data-link': item.redirect_link" class="speed-dial-item-img">
+        </div>
+      <!-- /ko -->
+
+      <!-- <div data-link="https://google.com.br/" onclick="openLink(this)" class="speed-dial-item">
+        <img class="speed-dial-item-img" src="https://pics.freeicons.io/uploads/icons/png/20136677451543238895-512.png">
+      </div> -->
+
+    </div>
   </div>
 
-  <div id="speed-dial-items">
-    <!-- ko foreach: { data: getItems(), as: 'item' } -->
-      <div
-        attr="'data-text': item.text"
-        class="speed-dial-item"
-      >
-        <img attr="src: item.image_link, alt: item.text, 'data-link': item.redirect_link" class="speed-dial-item-img">
-      </div>
-    <!-- /ko -->
-
-    <!-- <div data-link="https://google.com.br/" onclick="openLink(this)" class="speed-dial-item">
-      <img class="speed-dial-item-img" src="https://pics.freeicons.io/uploads/icons/png/20136677451543238895-512.png">
-    </div> -->
-
-  </div>
-</div>
-
-<div data-bind="afterRender: initSpeedDial"></div>
+  <div data-bind="afterRender: initSpeedDial"></div>
+<!-- /ko -->
