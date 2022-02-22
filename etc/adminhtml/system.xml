@@ -40,6 +40,17 @@
           <validate>integer</validate>
 				</field>
 
+				<field id="icon_image" translate="label" type="image" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+					<label>Ícone Principal</label>
+					<backend_model>Caio\SpeedDial\Model\Config\Backend\Image</backend_model>
+					<comment>Extensões permitidas: jpg, jpeg, gif, png, svg</comment>
+					<!-- <base_url type="media" scope_info="1">speed_dial/main_icon</base_url> -->
+				</field>
+
+        <field id="background_icon_color" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+					<label>Cor de fundo do ícone (CSS)</label>
+					<comment>Funciona apenas para ícones com fundo transparente</comment>
+				</field>
       </group>
 		</section>
 	</system>

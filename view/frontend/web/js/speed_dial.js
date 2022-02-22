@@ -1,18 +1,20 @@
 define([
     'uiComponent',
     'ko',
-    '@popperjs/core',
     'Caio_SpeedDial/js/libs/tippy',
-], function(Component, ko, popper, tippy){
+], function(Component, ko, tippy){
     const tooltips = []
 
     var ICONS_MARGIN 
     var SPEED_DIAL_ITEMS_HEIGHT
     var SPEED_DIAL_ITEMS_WIDTH
+    var ICON_IMAGE
+    var BACKGROUND_ICON_COLOR
+    var isOpened = false
 
     return Component.extend({
         items: ko.observable(window.speedDialItems),
-        
+
         defaults: {
             template: 'Caio_SpeedDial/speed_dial'
         },
@@ -30,6 +32,8 @@ define([
             ICONS_MARGIN = window.speedDialConfig.iconsMargin
             SPEED_DIAL_ITEMS_HEIGHT = window.speedDialConfig.iconSize
             SPEED_DIAL_ITEMS_WIDTH = window.speedDialConfig.iconSize
+            ICON_IMAGE = window.speedDialConfig.iconImage
+            BACKGROUND_ICON_COLOR = window.speedDialConfig.iconImageBackground
         
             const speedDialWrapper = this.getSpeedDialWrapper()
             speedDialWrapper.style.width = `${SPEED_DIAL_ITEMS_WIDTH}px`
@@ -41,12 +45,17 @@ define([
             const speedDialMainIconImg = this.getSpeedDialMainIconImg()
             speedDialMainIconImg.style.width = SPEED_DIAL_ITEMS_WIDTH
             speedDialMainIconImg.style.height = SPEED_DIAL_ITEMS_HEIGHT
+            speedDialMainIconImg.width = SPEED_DIAL_ITEMS_WIDTH
+            speedDialMainIconImg.height = SPEED_DIAL_ITEMS_HEIGHT
+            speedDialMainIconImg.src = ICON_IMAGE
 
             speedDialItemsWrapper.style.height = `${ICONS_MARGIN * (items.length + 1)}px`
         
-            const mainIcon = this.getMainIcon()
-            mainIcon.width = SPEED_DIAL_ITEMS_WIDTH
-            mainIcon.height = SPEED_DIAL_ITEMS_HEIGHT
+            const mainIconWrapper = this.getSpeedDialMainIcon()
+            mainIconWrapper.style.background = BACKGROUND_ICON_COLOR
+            mainIconWrapper.onclick = () => {
+                this.toggleSpeedDial()
+            }
         
             for(let i = 0; i < items.length; i++){
                 items[i].style.height = `${SPEED_DIAL_ITEMS_HEIGHT}px`
@@ -76,7 +85,7 @@ define([
             for(let i = 0; i < items.length; i++){
                 items[i].style.bottom = `0px`
             }
-        
+
             this.disableItemsTooltips()
         },
         
@@ -100,6 +109,17 @@ define([
             }
         },
 
+        toggleSpeedDial: function(){
+            if(isOpened){
+                this.hideSpeedDialItems()
+            }
+            else{
+                this.showSpeedDialItems()
+            }
+
+            isOpened = !isOpened
+        },
+
         disableItemsTooltips: function(){
             for(let i = 0; i < tooltips.length; i++){
                 tooltips[i].disable()
@@ -118,6 +138,10 @@ define([
             return document.getElementById('speed-dial-items')
         },
 
+        getSpeedDialMainIcon: function(){
+            return document.querySelector('#speed-dial-main-icon')
+        },
+
         getSpeedDialMainIconImg: function(){
             return document.querySelector('#speed-dial-main-icon img')
         },
@@ -129,9 +153,5 @@ define([
         getSpeedDialItemsImgs: function(){
             return document.querySelectorAll('#speed-dial-items .speed-dial-item img')
         },
-        
-        getMainIcon: function(){
-            return document.querySelector('#speed-dial-main-icon img')
-        }
     });
 });

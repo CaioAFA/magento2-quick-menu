@@ -1,5 +1,8 @@
 <?php
+
 namespace Caio\SpeedDial\Block;
+
+use Magento\Framework\App\Filesystem\DirectoryList;
 
 class SpeedDial extends \Magento\Framework\View\Element\Template
 {
@@ -10,15 +13,29 @@ class SpeedDial extends \Magento\Framework\View\Element\Template
      */
     protected $scopeConfig;
 
+    /**
+     * @var \Magento\Store\Model\StoreManagerInterface
+     */
+    protected $storeManager;
+
+    /**
+     * @var \Magento\Framework\View\Asset\Repository
+     */
+    protected $assetRepo;
+
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
         \Caio\SpeedDial\Model\ResourceModel\Item\Collection $itemsCollection,
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
+        \Magento\Store\Model\StoreManagerInterface $storeManager,
+        \Magento\Framework\View\Asset\Repository $assetRepo,
         array $data = []
     ) {
         parent::__construct($context, $data);
         $this->scopeConfig = $scopeConfig;
         $this->itemsCollection = $itemsCollection;
+        $this->storeManager = $storeManager;
+        $this->assetRepo = $assetRepo;
     }
 
     public function getSpeedDialItems(){
@@ -57,12 +74,33 @@ class SpeedDial extends \Magento\Framework\View\Element\Template
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
         );
 
+        $iconImage = $this->scopeConfig->getValue(
+            'speed_dial/general/icon_image', 
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+        );
+
+        if($iconImage){
+            $currentStore = $this->storeManager->getStore();
+            $mediapath = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+            $iconImageFullPath = $mediapath . $iconImage;
+        }
+        else{
+            $iconImageFullPath = $this->assetRepo->getUrl("Caio_SpeedDial::image/sample_icon.png");;
+        }
+
+        $iconImageBackground = $this->scopeConfig->getValue(
+            'speed_dial/general/background_icon_color', 
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+        );
+
         return json_encode([
             'isEnabled' => $isEnabled,
             'iconSize' => $iconSize,
             'iconsMargin' => $iconMargin,
             'leftDistance' => $leftDistance,
             'bottomDistance' => $bottomDistance,
+            'iconImage' => $iconImageFullPath,
+            'iconImageBackground' => $iconImageBackground
         ]);
     }
 }
