@@ -5,22 +5,37 @@ define([
 ], function(Component, ko, tippy){
     const tooltips = []
 
-    var ICONS_MARGIN 
-    var SPEED_DIAL_ITEMS_HEIGHT
-    var SPEED_DIAL_ITEMS_WIDTH
-    var ICON_IMAGE
-    var BACKGROUND_ICON_COLOR
+    var ICONS_MARGIN
+    var IMAGE_PATH = 'speed_dial_icon/'
     var isOpened = false
 
     return Component.extend({
         items: ko.observable(window.speedDialItems),
+        adjustedItems: ko.observable(false),
 
         defaults: {
             template: 'Caio_SpeedDial/speed_dial'
         },
 
         getItems: function(){
-            return this.items()
+            if(this.adjustedItems()){
+                console.log(this.items())
+                return this.items()
+            }
+
+            let items = this.items()
+
+            for(let i = 0; i < items.length; i++){
+                const item = items[i]
+
+                if(item.image){
+                    item.image = JSON.parse(item.image).map((i) => i.name)[0]
+                    item.image = window.speedDialConfig.mediaPath + IMAGE_PATH + item.image
+                }
+            }
+
+            this.adjustedItems(true)
+            return items
         },
 
         isModuleEnabled: function(){
@@ -30,15 +45,18 @@ define([
 
         initSpeedDial: function(){
             ICONS_MARGIN = window.speedDialConfig.iconsMargin
-            SPEED_DIAL_ITEMS_HEIGHT = window.speedDialConfig.iconSize
-            SPEED_DIAL_ITEMS_WIDTH = window.speedDialConfig.iconSize
-            ICON_IMAGE = window.speedDialConfig.iconImage
-            BACKGROUND_ICON_COLOR = window.speedDialConfig.iconImageBackground
-        
+            var SPEED_DIAL_ITEMS_HEIGHT = window.speedDialConfig.iconSize
+            var SPEED_DIAL_ITEMS_WIDTH = window.speedDialConfig.iconSize
+            var SPEED_DIAL_LEFT_DISTANCE = window.speedDialConfig.leftDistance
+            var SPEED_DIAL_BOTTOM_DISTANCE = window.speedDialConfig.bottomDistance
+            var ICON_IMAGE = window.speedDialConfig.iconImage
+            var BACKGROUND_ICON_COLOR = window.speedDialConfig.iconImageBackground
+
             const speedDialWrapper = this.getSpeedDialWrapper()
             speedDialWrapper.style.width = `${SPEED_DIAL_ITEMS_WIDTH}px`
+            speedDialWrapper.style.right = `${SPEED_DIAL_LEFT_DISTANCE}px`
+            speedDialWrapper.style.bottom = `${SPEED_DIAL_BOTTOM_DISTANCE}px`
 
-            const speedDialItemsWrapper = this.getSpeedDialItemsWrapper()
             const items = this.getSpeedDialItems()
             const itemsImgs = this.getSpeedDialItemsImgs()
             
@@ -49,6 +67,7 @@ define([
             speedDialMainIconImg.height = SPEED_DIAL_ITEMS_HEIGHT
             speedDialMainIconImg.src = ICON_IMAGE
 
+            const speedDialItemsWrapper = this.getSpeedDialItemsWrapper()
             speedDialItemsWrapper.style.height = `${ICONS_MARGIN * (items.length + 1)}px`
         
             const mainIconWrapper = this.getSpeedDialMainIcon()
@@ -60,12 +79,13 @@ define([
             for(let i = 0; i < items.length; i++){
                 items[i].style.height = `${SPEED_DIAL_ITEMS_HEIGHT}px`
                 items[i].style.width = `${SPEED_DIAL_ITEMS_WIDTH}px`
+                items[i].onclick = this.openLink
             }
 
             for(let i = 0; i < itemsImgs.length; i++){
                 itemsImgs[i].height = SPEED_DIAL_ITEMS_HEIGHT
                 itemsImgs[i].width = SPEED_DIAL_ITEMS_WIDTH
-                items[i].onclick = this.openLink
+                itemsImgs[i].style.background = itemsImgs[i].getAttribute('data-background') ?? 'white'
             }
         },
         

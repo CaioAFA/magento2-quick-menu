@@ -14,7 +14,7 @@
 			<button name="add">
 				<url path="*/*/new"/>
 				<class>primary</class>
-				<label translate="true">Add new item</label>
+				<label translate="true">Add New Item</label>
 			</button>
 		</buttons>
 	</settings>
@@ -66,6 +66,7 @@
 				<indexField>item_id</indexField>
 			</settings>
 		</selectionsColumn>
+
 		<column name="item_id">
 			<settings>
 				<filter>text</filter>
@@ -77,20 +78,7 @@
 		<column name="background">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">Cor de Fundo (CSS)</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-
-		<column name="image_link">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">Link da Imagem / Ícone</label>
+				<label translate="true">Background Color (CSS)</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -103,7 +91,7 @@
 		<column name="redirect_link">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">Redirecionar para</label>
+				<label translate="true">Redirect To</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -116,7 +104,33 @@
 		<column name="text">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">Texto</label>
+				<label translate="true">Text</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+
+		<column name="position">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Position</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+
+		<column name="image" class="Caio\SpeedDial\Ui\Component\Listing\Column\Image" component="Magento_Ui/js/grid/columns/thumbnail">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Icon</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>

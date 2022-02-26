@@ -2,8 +2,6 @@
 
 namespace Caio\SpeedDial\Block;
 
-use Magento\Framework\App\Filesystem\DirectoryList;
-
 class SpeedDial extends \Magento\Framework\View\Element\Template
 {
     protected $itemsCollection;
@@ -79,10 +77,11 @@ class SpeedDial extends \Magento\Framework\View\Element\Template
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
         );
 
+        $currentStore = $this->storeManager->getStore();
+        $mediaPath = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+
         if($iconImage){
-            $currentStore = $this->storeManager->getStore();
-            $mediapath = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
-            $iconImageFullPath = $mediapath . $iconImage;
+            $iconImageFullPath = $mediaPath . $iconImage;
         }
         else{
             $iconImageFullPath = $this->assetRepo->getUrl("Caio_SpeedDial::image/sample_icon.png");;
@@ -100,7 +99,8 @@ class SpeedDial extends \Magento\Framework\View\Element\Template
             'leftDistance' => $leftDistance,
             'bottomDistance' => $bottomDistance,
             'iconImage' => $iconImageFullPath,
-            'iconImageBackground' => $iconImageBackground
+            'iconImageBackground' => $iconImageBackground,
+            'mediaPath' => $mediaPath
         ]);
     }
 }

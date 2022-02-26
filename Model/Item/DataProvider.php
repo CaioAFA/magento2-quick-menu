@@ -70,6 +70,7 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
         }
         $items = $this->collection->getItems();
         foreach ($items as $model) {
+            $model->setImage(json_decode($model->getImage()));
             $this->loadedData[$model->getId()] = $model->getData();
         }
         $data = $this->dataPersistor->get('caio_speeddial_item');

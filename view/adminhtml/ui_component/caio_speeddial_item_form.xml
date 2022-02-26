@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
+<?xml version="1.0"?>
 <form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
 	<argument name="data" xsi:type="array">
 		<item name="js_config" xsi:type="array">
@@ -9,10 +9,10 @@
 	</argument>
 	<settings>
 		<buttons>
-			<button name="back" class="Caio\SpeedDial\Block\Adminhtml\Item\Edit\BackButton"/>
-			<button name="delete" class="Caio\SpeedDial\Block\Adminhtml\Item\Edit\DeleteButton"/>
-			<button name="save" class="Caio\SpeedDial\Block\Adminhtml\Item\Edit\SaveButton"/>
-			<button name="save_and_continue" class="Caio\SpeedDial\Block\Adminhtml\Item\Edit\SaveAndContinueButton"/>
+			<button name="back" class="Caio\SpeedDial\Block\Adminhtml\Item\Edit\BackButton" />
+			<button name="delete" class="Caio\SpeedDial\Block\Adminhtml\Item\Edit\DeleteButton" />
+			<button name="save" class="Caio\SpeedDial\Block\Adminhtml\Item\Edit\SaveButton" />
+			<button name="save_and_continue" class="Caio\SpeedDial\Block\Adminhtml\Item\Edit\SaveAndContinueButton" />
 		</buttons>
 		<namespace>caio_speeddial_item_form</namespace>
 		<dataScope>data</dataScope>
@@ -27,7 +27,7 @@
 			</item>
 		</argument>
 		<settings>
-			<submitUrl path="*/*/save"/>
+			<submitUrl path="*/*/save" />
 		</settings>
 		<dataProvider name="item_form_data_source" class="Caio\SpeedDial\Model\Item\DataProvider">
 			<settings>
@@ -38,9 +38,9 @@
 	</dataSource>
 	<fieldset name="general">
 		<settings>
-			<label/>
+			<label />
 		</settings>
-		
+
 		<field name="background" formElement="input" sortOrder="10">
 			<argument name="data" xsi:type="array">
 				<item name="config" xsi:type="array">
@@ -49,24 +49,8 @@
 			</argument>
 			<settings>
 				<dataType>text</dataType>
-				<label translate="true">Cor do Fundo (CSS)</label>
+				<label translate="true">Background Color (CSS)</label>
 				<dataScope>background</dataScope>
-				<validation>
-					<rule name="required-entry" xsi:type="boolean">false</rule>
-				</validation>
-			</settings>
-		</field>
-
-		<field name="image_link" formElement="input" sortOrder="20">
-			<argument name="data" xsi:type="array">
-				<item name="config" xsi:type="array">
-					<item name="source" xsi:type="string">item</item>
-				</item>
-			</argument>
-			<settings>
-				<dataType>text</dataType>
-				<label translate="true">Link da Imagem / Ícone</label>
-				<dataScope>image_link</dataScope>
 				<validation>
 					<rule name="required-entry" xsi:type="boolean">false</rule>
 				</validation>
@@ -81,14 +65,14 @@
 			</argument>
 			<settings>
 				<dataType>text</dataType>
-				<label translate="true">Redirecionar para</label>
+				<label translate="true">Redirect To</label>
 				<dataScope>redirect_link</dataScope>
 				<validation>
 					<rule name="required-entry" xsi:type="boolean">false</rule>
 				</validation>
 			</settings>
 		</field>
-		
+
 		<field name="text" formElement="input" sortOrder="40">
 			<argument name="data" xsi:type="array">
 				<item name="config" xsi:type="array">
@@ -97,7 +81,7 @@
 			</argument>
 			<settings>
 				<dataType>text</dataType>
-				<label translate="true">Texto</label>
+				<label translate="true">Text</label>
 				<dataScope>text</dataScope>
 				<validation>
 					<rule name="required-entry" xsi:type="boolean">false</rule>
@@ -113,13 +97,32 @@
 			</argument>
 			<settings>
 				<dataType>text</dataType>
-				<label translate="true">Posição</label>
+				<label translate="true">Position</label>
 				<dataScope>position</dataScope>
 				<validation>
 					<rule name="required-entry" xsi:type="boolean">false</rule>
 					<rule name="validate-number" xsi:type="boolean">true</rule>
 				</validation>
 			</settings>
+		</field>
+
+		<field name="image">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">string</item>
+					<item name="source" xsi:type="string">Label </item>
+					<item name="label" xsi:type="string" translate="true">Icon</item>
+					<item name="visible" xsi:type="boolean">true</item>
+					<item name="formElement" xsi:type="string">fileUploader</item>
+					<item name="elementTmpl" xsi:type="string">Caio_SpeedDial/ui/form/element/uploader/uploader</item>
+					<item name="previewTmpl" xsi:type="string">Caio_SpeedDial/image-preview</item>
+					<item name="required" xsi:type="boolean">false</item>
+					<item name="sortOrder" xsi:type="number">100</item>
+					<item name="uploaderConfig" xsi:type="array">
+						<item name="url" xsi:type="url" path="caio_speeddial/index/upload" />
+					</item>
+				</item>
+			</argument>
 		</field>
 	</fieldset>
 </form>

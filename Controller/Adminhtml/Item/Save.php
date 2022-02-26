@@ -58,7 +58,14 @@ class Save extends \Magento\Backend\App\Action
                 $this->messageManager->addErrorMessage(__('This Item no longer exists.'));
                 return $resultRedirect->setPath('*/*/');
             }
+
+            // $model->setData("image", [[$model->getData("image")]]);
         
+            if(isset($data['image']) && count($data['image'])){
+                $jsonSerializer = $this->_objectManager->create('\Magento\Framework\Serialize\Serializer\Json');
+                $data['image'] = $jsonSerializer->serialize($data['image']);
+            }
+
             $model->setData($data);
         
             try {

@@ -1,7 +1,5 @@
 #speed-dial-wrapper{
 	position: fixed;
-	bottom: 10px;
-	right: 10px;
 	z-index: 99999999;
 
 	display: flex;
@@ -47,6 +45,5 @@
 
 .speed-dial-item-img{
 	z-index: 10;
-	background: white;
 	border-radius: 50px;
 }

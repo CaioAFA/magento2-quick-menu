@@ -61,7 +61,14 @@ class Edit extends \Caio\SpeedDial\Controller\Adminhtml\Item
                 return $resultRedirect->setPath('*/*/');
             }
         }
-        $this->_coreRegistry->register('caio_speeddial_item', $model);
+
+        // $model->setImage(json_decode($model->getImage()));
+
+        // $jsonSerializer = $this->_objectManager->create('\Magento\Framework\Serialize\Serializer\Json');
+        // $model->setImage($jsonSerializer->unserialize($model->getImage()));
+
+        $data = $model->getData();
+        $this->_coreRegistry->register('caio_speeddial_item', $data);
         
         // 3. Build edit form
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */

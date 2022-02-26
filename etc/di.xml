@@ -1,8 +1,8 @@
-<?xml version="1.0" ?>
+<?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-	<preference for="Caio\SpeedDial\Api\ItemRepositoryInterface" type="Caio\SpeedDial\Model\ItemRepository"/>
-	<preference for="Caio\SpeedDial\Api\Data\ItemInterface" type="Caio\SpeedDial\Model\Data\Item"/>
-	<preference for="Caio\SpeedDial\Api\Data\ItemSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<preference for="Caio\SpeedDial\Api\ItemRepositoryInterface" type="Caio\SpeedDial\Model\ItemRepository" />
+	<preference for="Caio\SpeedDial\Api\Data\ItemInterface" type="Caio\SpeedDial\Model\Data\Item" />
+	<preference for="Caio\SpeedDial\Api\Data\ItemSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
 	<virtualType name="Caio\SpeedDial\Model\ResourceModel\Item\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
 		<arguments>
 			<argument name="mainTable" xsi:type="string">caio_speeddial_item</argument>
@@ -13,6 +13,20 @@
 		<arguments>
 			<argument name="collections" xsi:type="array">
 				<item name="caio_speeddial_item_listing_data_source" xsi:type="string">Caio\SpeedDial\Model\ResourceModel\Item\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+
+
+	<type name="Caio\SpeedDial\Model\ImageUploader">
+		<arguments>
+			<argument name="baseTmpPath" xsi:type="string">speed_dial_icon/tmp</argument>
+			<argument name="basePath" xsi:type="string">speed_dial_icon/</argument>
+			<argument name="allowedExtensions" xsi:type="array">
+				<item name="jpg" xsi:type="string">jpg</item>
+				<item name="jpeg" xsi:type="string">jpeg</item>
+				<item name="gif" xsi:type="string">gif</item>
+				<item name="png" xsi:type="string">png</item>
 			</argument>
 		</arguments>
 	</type>
