@@ -4,6 +4,8 @@ namespace Caio\SpeedDial\Block;
 
 class SpeedDial extends \Magento\Framework\View\Element\Template
 {
+    const IMAGES_PATH = 'speed_dial_icon/';
+
     protected $itemsCollection;
 
     /**
@@ -37,7 +39,23 @@ class SpeedDial extends \Magento\Framework\View\Element\Template
     }
 
     public function getSpeedDialItems(){
-        return json_encode($this->itemsCollection->getData());
+        $items = $this->itemsCollection->getData();
+
+        $currentStore = $this->storeManager->getStore();
+        $mediaPath = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+
+        foreach($items as &$i){
+            if(!isset($i['image'])){
+                $defaultImage = $this->assetRepo->getUrl("Caio_SpeedDial::image/sample_icon.png");
+                $i['image'] = $defaultImage;
+            }
+            else{
+                $imgInfo = json_decode($i['image'], true);
+                $i['image'] = $mediaPath . self::IMAGES_PATH . $imgInfo[0]['name'];
+            }
+        }
+
+        return json_encode($items);
     }
 
     public function getSpeedDialConfigurations(){

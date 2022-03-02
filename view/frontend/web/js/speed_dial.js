@@ -2,40 +2,21 @@ define([
     'uiComponent',
     'ko',
     'Caio_SpeedDial/js/libs/tippy',
-], function(Component, ko, tippy){
+    'jquery'
+], function(Component, ko, tippy, $){
     const tooltips = []
 
     var ICONS_MARGIN
-    var IMAGE_PATH = 'speed_dial_icon/'
+    const IS_MOBILE = window.screen.width < 9999 ? true : false
     var isOpened = false
 
     return Component.extend({
-        items: ko.observable(window.speedDialItems),
-        adjustedItems: ko.observable(false),
-
         defaults: {
             template: 'Caio_SpeedDial/speed_dial'
         },
 
         getItems: function(){
-            if(this.adjustedItems()){
-                console.log(this.items())
-                return this.items()
-            }
-
-            let items = this.items()
-
-            for(let i = 0; i < items.length; i++){
-                const item = items[i]
-
-                if(item.image){
-                    item.image = JSON.parse(item.image).map((i) => i.name)[0]
-                    item.image = window.speedDialConfig.mediaPath + IMAGE_PATH + item.image
-                }
-            }
-
-            this.adjustedItems(true)
-            return items
+            return window.speedDialItems
         },
 
         isModuleEnabled: function(){
@@ -57,46 +38,72 @@ define([
             speedDialWrapper.style.right = `${SPEED_DIAL_LEFT_DISTANCE}px`
             speedDialWrapper.style.bottom = `${SPEED_DIAL_BOTTOM_DISTANCE}px`
 
-            const items = this.getSpeedDialItems()
-            const itemsImgs = this.getSpeedDialItemsImgs()
-            
             const speedDialMainIconImg = this.getSpeedDialMainIconImg()
             speedDialMainIconImg.style.width = SPEED_DIAL_ITEMS_WIDTH
             speedDialMainIconImg.style.height = SPEED_DIAL_ITEMS_HEIGHT
             speedDialMainIconImg.width = SPEED_DIAL_ITEMS_WIDTH
             speedDialMainIconImg.height = SPEED_DIAL_ITEMS_HEIGHT
             speedDialMainIconImg.src = ICON_IMAGE
+            speedDialMainIconImg.ontouchstart = (e) => {
+                this.toggleSpeedDial()
+                e.preventDefault() // Prevent "onclick" event
+            }
+            this.handleOuterTouchEvent()
 
-            const speedDialItemsWrapper = this.getSpeedDialItemsWrapper()
-            speedDialItemsWrapper.style.height = `${ICONS_MARGIN * (items.length + 1)}px`
-        
             const mainIconWrapper = this.getSpeedDialMainIcon()
             mainIconWrapper.style.background = BACKGROUND_ICON_COLOR
             mainIconWrapper.onclick = () => {
                 this.toggleSpeedDial()
             }
-        
+
+            const items = this.getSpeedDialItems()
             for(let i = 0; i < items.length; i++){
                 items[i].style.height = `${SPEED_DIAL_ITEMS_HEIGHT}px`
                 items[i].style.width = `${SPEED_DIAL_ITEMS_WIDTH}px`
                 items[i].onclick = this.openLink
             }
 
+            const itemsImgs = this.getSpeedDialItemsImgs()
             for(let i = 0; i < itemsImgs.length; i++){
                 itemsImgs[i].height = SPEED_DIAL_ITEMS_HEIGHT
                 itemsImgs[i].width = SPEED_DIAL_ITEMS_WIDTH
                 itemsImgs[i].style.background = itemsImgs[i].getAttribute('data-background') ?? 'white'
             }
+
+            const speedDialItemsWrapper = this.getSpeedDialItemsWrapper()
+            speedDialItemsWrapper.style.height = `${ICONS_MARGIN * (items.length + 1)}px`
+        },
+
+        // When click away from div in mobile, close the speed dial
+        handleOuterTouchEvent: function(){
+            window.ontouchstart = (e) => {
+                if(
+                    e.path && e.path.length && e.path.length >= 3 &&
+                    e.path[2] != this.getSpeedDialWrapper()
+                ){
+                    this.hideSpeedDialItems()
+                }
+            }            
         },
         
         showSpeedDialItems: function(){
-            const items = this.getSpeedDialItems()
+            this.enableItemsTooltips()
 
+            const items = this.getSpeedDialItems()
             for(let i = 0; i < items.length; i++){
                 items[i].style.bottom = `${ICONS_MARGIN * (i + 1)}px`
             }
-        
-            this.enableItemsTooltips()
+
+            if(IS_MOBILE) {
+                // Wait until the animation ends
+                setTimeout(() => {
+                    for(let i = 0; i < tooltips.length; i++){
+                        tooltips[i].show()
+                    }
+                }, 500)
+            }
+    
+            isOpened = true
         },
         
         hideSpeedDialItems: function(){
@@ -106,12 +113,13 @@ define([
                 items[i].style.bottom = `0px`
             }
 
+            isOpened = false
             this.disableItemsTooltips()
         },
         
         enableItemsTooltips: function(){
             const speedDialItems = this.getSpeedDialItems()
-        
+
             if(tooltips.length){
                 for(let i = 0; i < speedDialItems.length; i++){
                     tooltips[i].enable()
@@ -136,8 +144,6 @@ define([
             else{
                 this.showSpeedDialItems()
             }
-
-            isOpened = !isOpened
         },
 
         disableItemsTooltips: function(){

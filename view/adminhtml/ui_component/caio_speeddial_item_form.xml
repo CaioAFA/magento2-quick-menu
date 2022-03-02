@@ -45,6 +45,7 @@
 			<argument name="data" xsi:type="array">
 				<item name="config" xsi:type="array">
 					<item name="source" xsi:type="string">item</item>
+					<item name="placeholder" xsi:type="string">Ex.: red / blue / #FFFFFF</item>
 				</item>
 			</argument>
 			<settings>
@@ -61,6 +62,7 @@
 			<argument name="data" xsi:type="array">
 				<item name="config" xsi:type="array">
 					<item name="source" xsi:type="string">item</item>
+					<item name="placeholder" xsi:type="string">https://google.com.br/</item>
 				</item>
 			</argument>
 			<settings>
@@ -77,6 +79,7 @@
 			<argument name="data" xsi:type="array">
 				<item name="config" xsi:type="array">
 					<item name="source" xsi:type="string">item</item>
+					<item name="placeholder" xsi:type="string">Google</item>
 				</item>
 			</argument>
 			<settings>
@@ -93,6 +96,7 @@
 			<argument name="data" xsi:type="array">
 				<item name="config" xsi:type="array">
 					<item name="source" xsi:type="string">item</item>
+					<item name="placeholder" translate="true" xsi:type="string">The lower the number, the higher your priority</item>
 				</item>
 			</argument>
 			<settings>
