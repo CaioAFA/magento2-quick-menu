@@ -4,10 +4,11 @@ define([
     'Caio_SpeedDial/js/libs/tippy',
     'jquery'
 ], function(Component, ko, tippy, $){
-    const tooltips = []
+    const tooltips = {}
 
     var ICONS_MARGIN
-    const IS_MOBILE = window.screen.width < 9999 ? true : false
+    const IS_MOBILE = window.screen.width < 1024 ? true : false
+    const ANIMATION_DURATION = 500 // Milliseconds
     var isOpened = false
 
     return Component.extend({
@@ -33,6 +34,28 @@ define([
             var ICON_IMAGE = window.speedDialConfig.iconImage
             var BACKGROUND_ICON_COLOR = window.speedDialConfig.iconImageBackground
 
+            const items = this.getSpeedDialItems()
+            for(let i = 0; i < items.length; i++){
+                items[i].style.height = `${SPEED_DIAL_ITEMS_HEIGHT}px`
+                items[i].style.width = `${SPEED_DIAL_ITEMS_WIDTH}px`
+                items[i].addEventListener('click', (e) => {
+                    this.openLink(e)
+                })
+                items[i].addEventListener('touchstart', (e) => {
+                    this.openLink(e)
+                })
+            }
+
+            const itemsImgs = this.getSpeedDialItemsImgs()
+            for(let i = 0; i < itemsImgs.length; i++){
+                itemsImgs[i].height = SPEED_DIAL_ITEMS_HEIGHT
+                itemsImgs[i].width = SPEED_DIAL_ITEMS_WIDTH
+                itemsImgs[i].style.background = itemsImgs[i].getAttribute('data-background') ?? 'white'
+                itemsImgs[i].addEventListener('mouseover', (element) => {
+                    this.hideOtherTooltips(element)
+                })
+            }
+
             const speedDialWrapper = this.getSpeedDialWrapper()
             speedDialWrapper.style.width = `${SPEED_DIAL_ITEMS_WIDTH}px`
             speedDialWrapper.style.right = `${SPEED_DIAL_LEFT_DISTANCE}px`
@@ -56,34 +79,20 @@ define([
                 this.toggleSpeedDial()
             }
 
-            const items = this.getSpeedDialItems()
-            for(let i = 0; i < items.length; i++){
-                items[i].style.height = `${SPEED_DIAL_ITEMS_HEIGHT}px`
-                items[i].style.width = `${SPEED_DIAL_ITEMS_WIDTH}px`
-                items[i].onclick = this.openLink
-            }
-
-            const itemsImgs = this.getSpeedDialItemsImgs()
-            for(let i = 0; i < itemsImgs.length; i++){
-                itemsImgs[i].height = SPEED_DIAL_ITEMS_HEIGHT
-                itemsImgs[i].width = SPEED_DIAL_ITEMS_WIDTH
-                itemsImgs[i].style.background = itemsImgs[i].getAttribute('data-background') ?? 'white'
-            }
-
             const speedDialItemsWrapper = this.getSpeedDialItemsWrapper()
             speedDialItemsWrapper.style.height = `${ICONS_MARGIN * (items.length + 1)}px`
         },
 
         // When click away from div in mobile, close the speed dial
         handleOuterTouchEvent: function(){
-            window.ontouchstart = (e) => {
+            window.addEventListener('touchstart', (e) => {
+                const speedDialWrapper = this.getSpeedDialWrapper()
                 if(
-                    e.path && e.path.length && e.path.length >= 3 &&
-                    e.path[2] != this.getSpeedDialWrapper()
+                    e.path && e.path.length && e.path.length >= 3 && e.path[2] != speedDialWrapper
                 ){
                     this.hideSpeedDialItems()
                 }
-            }            
+            })
         },
         
         showSpeedDialItems: function(){
@@ -97,10 +106,12 @@ define([
             if(IS_MOBILE) {
                 // Wait until the animation ends
                 setTimeout(() => {
-                    for(let i = 0; i < tooltips.length; i++){
-                        tooltips[i].show()
+                    const tooltipsKeys = Object.keys(tooltips)
+                    for(let i = 0; i < tooltipsKeys.length; i++){
+                        const key = tooltipsKeys[i]
+                        tooltips[key].show()
                     }
-                }, 500)
+                }, ANIMATION_DURATION)
             }
     
             isOpened = true
@@ -118,21 +129,50 @@ define([
         },
         
         enableItemsTooltips: function(){
-            const speedDialItems = this.getSpeedDialItems()
+            setTimeout(() => {
+                const tooltipsKeys = Object.keys(tooltips)
 
-            if(tooltips.length){
-                for(let i = 0; i < speedDialItems.length; i++){
-                    tooltips[i].enable()
+                // If already configured
+                if(tooltipsKeys.length){
+                    if(!isOpened) return
+
+                    for(let i = 0; i < tooltipsKeys.length; i++){
+                        const key = tooltipsKeys[i]
+                        tooltips[key].enable()
+                    }
                 }
-            }
-            else{	
-                for(let i = 0; i < speedDialItems.length; i++){
-                    tooltips.push(
-                        tippy(speedDialItems[i], {
+                else{	
+                    const speedDialItems = this.getSpeedDialItems()
+                    const speedDialItemsImgs = this.getSpeedDialItemsImgs()
+                    for(let i = 0; i < speedDialItems.length; i++){
+                        tooltips[speedDialItemsImgs[i].id] = tippy(speedDialItems[i], {
                             placement: 'right',
+                            inlinePositioning: true,
                             content: speedDialItems[i].getAttribute('data-text'),
                         })
-                    );
+                    }
+                }
+            }, ANIMATION_DURATION - 400);            
+        },
+
+        disableItemsTooltips: function(){
+            const tooltipsKeys = Object.keys(tooltips)
+            for(let i = 0; i < tooltipsKeys.length; i++){
+                const key = tooltipsKeys[i]
+                tooltips[key].hide()
+                tooltips[key].disable()
+            }
+        },
+
+        hideOtherTooltips: function(element){
+            const elementId = element.target.id
+
+            const tooltipsKeys = Object.keys(tooltips)
+            for(let i = 0; i < tooltipsKeys.length; i++){
+                const key = tooltipsKeys[i]
+
+                if(key != elementId){
+                    tooltips[key].hide()
                 }
             }
         },
@@ -145,15 +185,9 @@ define([
                 this.showSpeedDialItems()
             }
         },
-
-        disableItemsTooltips: function(){
-            for(let i = 0; i < tooltips.length; i++){
-                tooltips[i].disable()
-            }
-        },
         
-        openLink: (el) => {
-            window.open(el.target.dataset.link).focus()
+        openLink: (e) => {
+            window.open(e.target.dataset.link).focus()
         },
 
         getSpeedDialWrapper: function(){

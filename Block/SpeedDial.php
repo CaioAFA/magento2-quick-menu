@@ -39,6 +39,8 @@ class SpeedDial extends \Magento\Framework\View\Element\Template
     }
 
     public function getSpeedDialItems(){
+        $this->itemsCollection->setOrder('position');
+        
         $items = $this->itemsCollection->getData();
 
         $currentStore = $this->storeManager->getStore();
@@ -52,6 +54,10 @@ class SpeedDial extends \Magento\Framework\View\Element\Template
             else{
                 $imgInfo = json_decode($i['image'], true);
                 $i['image'] = $mediaPath . self::IMAGES_PATH . $imgInfo[0]['name'];
+            }
+
+            if(!$i['background']){
+                $i['background'] = 'transparent';
             }
         }
 

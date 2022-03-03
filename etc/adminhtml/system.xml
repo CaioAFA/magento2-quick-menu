@@ -13,43 +13,43 @@
 			<resource>Caio_SpeedDial::item</resource>
 
       <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
-				<label>Configurações Gerais</label>
+				<label>General Configurations</label>
 				
 				<field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
-					<label>Ativado</label>
+					<label>Enabled</label>
 					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
 				</field>
 
         <field id="icon_size" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
-					<label>Tamanho do Ícone (em px)</label>
+					<label>Icon Size (in px)</label>
           <validate>integer</validate>
 				</field>
 
         <field id="icons_margin" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
-					<label>Margem entre os ícones (em px)</label>
+					<label>Icons margin (in px)</label>
           <validate>integer</validate>
 				</field>
 
         <field id="left_distance" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
-					<label>Distância (em px) do lado esquerdo da tela</label>
+					<label>Distance (in px) from the screen left side</label>
           <validate>integer</validate>
 				</field>
 
         <field id="bottom_distance" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
-					<label>Distância (em px) da parte de baixo da tela</label>
+					<label>Distance (in px) from screen bottom side</label>
           <validate>integer</validate>
 				</field>
 
 				<field id="icon_image" translate="label" type="image" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
-					<label>Ícone Principal</label>
+					<label>Main Icon</label>
 					<backend_model>Caio\SpeedDial\Model\Config\Backend\Image</backend_model>
-					<comment>Extensões permitidas: jpg, jpeg, gif, png, svg</comment>
+					<comment>Allowed extensions: jpg, jpeg, gif, png, svg. You can find free icons on https://uxwing.com/ or https://www.reshot.com/.</comment>
 					<!-- <base_url type="media" scope_info="1">speed_dial/main_icon</base_url> -->
 				</field>
 
         <field id="background_icon_color" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
-					<label>Cor de fundo do ícone (CSS)</label>
-					<comment>Funciona apenas para ícones com fundo transparente</comment>
+					<label>Icon Background Color (CSS)</label>
+					<comment>It works only with transparent images</comment>
 				</field>
       </group>
 		</section>

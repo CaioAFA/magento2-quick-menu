@@ -116,6 +116,7 @@
 					<item name="dataType" xsi:type="string">string</item>
 					<item name="source" xsi:type="string">Label </item>
 					<item name="label" xsi:type="string" translate="true">Icon</item>
+					<item name="notice" xsi:type="string" translate="true">You can find free icons on https://uxwing.com/ or https://www.reshot.com/.</item>
 					<item name="visible" xsi:type="boolean">true</item>
 					<item name="formElement" xsi:type="string">fileUploader</item>
 					<item name="elementTmpl" xsi:type="string">Caio_SpeedDial/ui/form/element/uploader/uploader</item>
