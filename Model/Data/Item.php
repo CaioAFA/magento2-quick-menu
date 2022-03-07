@@ -3,9 +3,9 @@
  * Teste
  * Copyright (C) 2019 
  * 
- * This file is part of Caio/SpeedDial.
+ * This file is part of Caio/QuickMenu.
  * 
- * Caio/SpeedDial is free software: you can redistribute it and/or modify
+ * Caio/QuickMenu is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
@@ -19,9 +19,9 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace Caio\SpeedDial\Model\Data;
+namespace Caio\QuickMenu\Model\Data;
 
-use Caio\SpeedDial\Api\Data\ItemInterface;
+use Caio\QuickMenu\Api\Data\ItemInterface;
 
 class Item extends \Magento\Framework\Api\AbstractExtensibleObject implements ItemInterface
 {
@@ -38,7 +38,7 @@ class Item extends \Magento\Framework\Api\AbstractExtensibleObject implements It
     /**
      * Set item_id
      * @param string $itemId
-     * @return \Caio\SpeedDial\Api\Data\ItemInterface
+     * @return \Caio\QuickMenu\Api\Data\ItemInterface
      */
     public function setItemId($itemId)
     {
@@ -57,7 +57,7 @@ class Item extends \Magento\Framework\Api\AbstractExtensibleObject implements It
     /**
      * Set background
      * @param string $background
-     * @return \Caio\SpeedDial\Api\Data\ItemInterface
+     * @return \Caio\QuickMenu\Api\Data\ItemInterface
      */
     public function setBackground($background)
     {
@@ -66,7 +66,7 @@ class Item extends \Magento\Framework\Api\AbstractExtensibleObject implements It
 
     /**
      * Retrieve existing extension attributes object or create a new one.
-     * @return \Caio\SpeedDial\Api\Data\ItemExtensionInterface|null
+     * @return \Caio\QuickMenu\Api\Data\ItemExtensionInterface|null
      */
     public function getExtensionAttributes()
     {
@@ -75,11 +75,11 @@ class Item extends \Magento\Framework\Api\AbstractExtensibleObject implements It
 
     /**
      * Set an extension attributes object.
-     * @param \Caio\SpeedDial\Api\Data\ItemExtensionInterface $extensionAttributes
+     * @param \Caio\QuickMenu\Api\Data\ItemExtensionInterface $extensionAttributes
      * @return $this
      */
     public function setExtensionAttributes(
-        \Caio\SpeedDial\Api\Data\ItemExtensionInterface $extensionAttributes
+        \Caio\QuickMenu\Api\Data\ItemExtensionInterface $extensionAttributes
     ) {
         return $this->_setExtensionAttributes($extensionAttributes);
     }
@@ -96,7 +96,7 @@ class Item extends \Magento\Framework\Api\AbstractExtensibleObject implements It
     /**
      * Set image_link
      * @param string $imageLink
-     * @return \Caio\SpeedDial\Api\Data\ItemInterface
+     * @return \Caio\QuickMenu\Api\Data\ItemInterface
      */
     public function setImageLink($imageLink)
     {
@@ -115,7 +115,7 @@ class Item extends \Magento\Framework\Api\AbstractExtensibleObject implements It
     /**
      * Set redirect_link
      * @param string $redirectLink
-     * @return \Caio\SpeedDial\Api\Data\ItemInterface
+     * @return \Caio\QuickMenu\Api\Data\ItemInterface
      */
     public function setRedirectLink($redirectLink)
     {
@@ -134,7 +134,7 @@ class Item extends \Magento\Framework\Api\AbstractExtensibleObject implements It
     /**
      * Set text
      * @param string $text
-     * @return \Caio\SpeedDial\Api\Data\ItemInterface
+     * @return \Caio\QuickMenu\Api\Data\ItemInterface
      */
     public function setText($text)
     {

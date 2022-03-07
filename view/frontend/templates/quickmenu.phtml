@@ -1,19 +1,19 @@
-<div id="speed_dial" data-bind="scope: 'speed_dial'">
+<div id="quickmenu" data-bind="scope: 'quickmenu'">
   <!-- ko template: getTemplate() -->
   <!-- /ko -->
 
   <!-- Devemos passar o ID da div acima como parâmetro aqui em baixo. -->
   <script type="text/x-magento-init">
     {
-      "#speed_dial": {
+      "#quickmenu": {
         "Magento_Ui/js/core/app": <?php /* @escapeNotVerified */ echo $block->getJsLayout(); ?>
       }
     }
   </script>
 
   <script>
-    window.speedDialItems = <?= $this->getSpeedDialItems() ?>;
-    window.speedDialConfig = <?= $this->getSpeedDialConfigurations() ?>;
+    window.speedDialItems = <?= $this->getQuickMenuItems() ?>;
+    window.speedDialConfig = <?= $this->getQuickMenuConfigurations() ?>;
   </script>
 
   <script>

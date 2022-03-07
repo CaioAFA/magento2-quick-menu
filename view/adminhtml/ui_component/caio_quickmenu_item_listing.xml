@@ -2,13 +2,13 @@
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
 	<argument name="data" xsi:type="array">
 		<item name="js_config" xsi:type="array">
-			<item name="provider" xsi:type="string">caio_speeddial_item_listing.caio_speeddial_item_listing_data_source</item>
+			<item name="provider" xsi:type="string">caio_quickmenu_item_listing.caio_quickmenu_item_listing_data_source</item>
 		</item>
 	</argument>
 	<settings>
-		<spinner>caio_speeddial_item_columns</spinner>
+		<spinner>caio_quickmenu_item_columns</spinner>
 		<deps>
-			<dep>caio_speeddial_item_listing.caio_speeddial_item_listing_data_source</dep>
+			<dep>caio_quickmenu_item_listing.caio_quickmenu_item_listing_data_source</dep>
 		</deps>
 		<buttons>
 			<button name="add">
@@ -18,12 +18,12 @@
 			</button>
 		</buttons>
 	</settings>
-	<dataSource name="caio_speeddial_item_listing_data_source" component="Magento_Ui/js/grid/provider">
+	<dataSource name="caio_quickmenu_item_listing_data_source" component="Magento_Ui/js/grid/provider">
 		<settings>
 			<updateUrl path="mui/index/render"/>
 		</settings>
-		<aclResource>Caio_SpeedDial::item</aclResource>
-		<dataProvider name="caio_speeddial_item_listing_data_source" class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+		<aclResource>Caio_QuickMenu::item</aclResource>
+		<dataProvider name="caio_quickmenu_item_listing_data_source" class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
 			<settings>
 				<requestFieldName>id</requestFieldName>
 				<primaryFieldName>item_id</primaryFieldName>
@@ -39,20 +39,20 @@
 		<filters name="listing_filters"/>
 		<paging name="listing_paging"/>
 	</listingToolbar>
-	<columns name="caio_speeddial_item_columns">
+	<columns name="caio_quickmenu_item_columns">
 		<settings>
 			<editorConfig>
-				<param name="selectProvider" xsi:type="string">caio_speeddial_item_listing.caio_speeddial_item_listing.caio_speeddial_item_columns.ids</param>
+				<param name="selectProvider" xsi:type="string">caio_quickmenu_item_listing.caio_quickmenu_item_listing.caio_quickmenu_item_columns.ids</param>
 				<param name="enabled" xsi:type="boolean">true</param>
 				<param name="indexField" xsi:type="string">item_id</param>
 				<param name="clientConfig" xsi:type="array">
-					<item name="saveUrl" xsi:type="url" path="caio_speeddial/item/inlineEdit"/>
+					<item name="saveUrl" xsi:type="url" path="caio_quickmenu/item/inlineEdit"/>
 					<item name="validateBeforeSave" xsi:type="boolean">false</item>
 				</param>
 			</editorConfig>
 			<childDefaults>
 				<param name="fieldAction" xsi:type="array">
-					<item name="provider" xsi:type="string">caio_speeddial_item_listing.caio_speeddial_item_listing.caio_speeddial_item_columns_editor</item>
+					<item name="provider" xsi:type="string">caio_quickmenu_item_listing.caio_quickmenu_item_listing.caio_quickmenu_item_columns_editor</item>
 					<item name="target" xsi:type="string">startEdit</item>
 					<item name="params" xsi:type="array">
 						<item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
@@ -127,7 +127,7 @@
 			</settings>
 		</column>
 
-		<column name="image" class="Caio\SpeedDial\Ui\Component\Listing\Column\Image" component="Magento_Ui/js/grid/columns/thumbnail">
+		<column name="image" class="Caio\QuickMenu\Ui\Component\Listing\Column\Image" component="Magento_Ui/js/grid/columns/thumbnail">
 			<settings>
 				<filter>text</filter>
 				<label translate="true">Icon</label>
@@ -140,7 +140,7 @@
 			</settings>
 		</column>
 
-		<actionsColumn name="actions" class="Caio\SpeedDial\Ui\Component\Listing\Column\ItemActions">
+		<actionsColumn name="actions" class="Caio\QuickMenu\Ui\Component\Listing\Column\ItemActions">
 			<settings>
 				<indexField>item_id</indexField>
 				<resizeEnabled>false</resizeEnabled>

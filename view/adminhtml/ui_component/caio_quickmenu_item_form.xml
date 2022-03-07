@@ -2,22 +2,22 @@
 <form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
 	<argument name="data" xsi:type="array">
 		<item name="js_config" xsi:type="array">
-			<item name="provider" xsi:type="string">caio_speeddial_item_form.item_form_data_source</item>
+			<item name="provider" xsi:type="string">caio_quickmenu_item_form.item_form_data_source</item>
 		</item>
 		<item name="label" xsi:type="string" translate="true">General Information</item>
 		<item name="template" xsi:type="string">templates/form/collapsible</item>
 	</argument>
 	<settings>
 		<buttons>
-			<button name="back" class="Caio\SpeedDial\Block\Adminhtml\Item\Edit\BackButton" />
-			<button name="delete" class="Caio\SpeedDial\Block\Adminhtml\Item\Edit\DeleteButton" />
-			<button name="save" class="Caio\SpeedDial\Block\Adminhtml\Item\Edit\SaveButton" />
-			<button name="save_and_continue" class="Caio\SpeedDial\Block\Adminhtml\Item\Edit\SaveAndContinueButton" />
+			<button name="back" class="Caio\QuickMenu\Block\Adminhtml\Item\Edit\BackButton" />
+			<button name="delete" class="Caio\QuickMenu\Block\Adminhtml\Item\Edit\DeleteButton" />
+			<button name="save" class="Caio\QuickMenu\Block\Adminhtml\Item\Edit\SaveButton" />
+			<button name="save_and_continue" class="Caio\QuickMenu\Block\Adminhtml\Item\Edit\SaveAndContinueButton" />
 		</buttons>
-		<namespace>caio_speeddial_item_form</namespace>
+		<namespace>caio_quickmenu_item_form</namespace>
 		<dataScope>data</dataScope>
 		<deps>
-			<dep>caio_speeddial_item_form.item_form_data_source</dep>
+			<dep>caio_quickmenu_item_form.item_form_data_source</dep>
 		</deps>
 	</settings>
 	<dataSource name="item_form_data_source">
@@ -29,7 +29,7 @@
 		<settings>
 			<submitUrl path="*/*/save" />
 		</settings>
-		<dataProvider name="item_form_data_source" class="Caio\SpeedDial\Model\Item\DataProvider">
+		<dataProvider name="item_form_data_source" class="Caio\QuickMenu\Model\Item\DataProvider">
 			<settings>
 				<requestFieldName>item_id</requestFieldName>
 				<primaryFieldName>item_id</primaryFieldName>
@@ -119,12 +119,12 @@
 					<item name="notice" xsi:type="string" translate="true">You can find free icons on https://uxwing.com/ or https://www.reshot.com/.</item>
 					<item name="visible" xsi:type="boolean">true</item>
 					<item name="formElement" xsi:type="string">fileUploader</item>
-					<item name="elementTmpl" xsi:type="string">Caio_SpeedDial/ui/form/element/uploader/uploader</item>
-					<item name="previewTmpl" xsi:type="string">Caio_SpeedDial/image-preview</item>
+					<item name="elementTmpl" xsi:type="string">Caio_QuickMenu/ui/form/element/uploader/uploader</item>
+					<item name="previewTmpl" xsi:type="string">Caio_QuickMenu/image-preview</item>
 					<item name="required" xsi:type="boolean">false</item>
 					<item name="sortOrder" xsi:type="number">100</item>
 					<item name="uploaderConfig" xsi:type="array">
-						<item name="url" xsi:type="url" path="caio_speeddial/index/upload" />
+						<item name="url" xsi:type="url" path="caio_quickmenu/index/upload" />
 					</item>
 				</item>
 			</argument>

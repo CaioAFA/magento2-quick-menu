@@ -3,9 +3,9 @@
  * Teste
  * Copyright (C) 2019 
  * 
- * This file is part of Caio/SpeedDial.
+ * This file is part of Caio/QuickMenu.
  * 
- * Caio/SpeedDial is free software: you can redistribute it and/or modify
+ * Caio/QuickMenu is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
@@ -19,15 +19,15 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace Caio\SpeedDial\Ui\Component\Listing\Column;
+namespace Caio\QuickMenu\Ui\Component\Listing\Column;
 
 class ItemActions extends \Magento\Ui\Component\Listing\Columns\Column
 {
 
-    const URL_PATH_EDIT = 'caio_speeddial/item/edit';
-    const URL_PATH_DELETE = 'caio_speeddial/item/delete';
+    const URL_PATH_EDIT = 'caio_quickmenu/item/edit';
+    const URL_PATH_DELETE = 'caio_quickmenu/item/delete';
     protected $urlBuilder;
-    const URL_PATH_DETAILS = 'caio_speeddial/item/details';
+    const URL_PATH_DETAILS = 'caio_quickmenu/item/details';
 
     /**
      * @param \Magento\Framework\View\Element\UiComponent\ContextInterface $context

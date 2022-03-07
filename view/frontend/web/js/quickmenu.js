@@ -1,7 +1,7 @@
 define([
     'uiComponent',
     'ko',
-    'Caio_SpeedDial/js/libs/tippy',
+    'Caio_QuickMenu/js/libs/tippy',
     'jquery'
 ], function(Component, ko, tippy, $){
     const tooltips = {}
@@ -12,7 +12,7 @@ define([
 
     return Component.extend({
         defaults: {
-            template: 'Caio_SpeedDial/speed_dial'
+            template: 'Caio_QuickMenu/quickmenu'
         },
 
         getItems: function(){
@@ -24,7 +24,7 @@ define([
             return isEnabled
         },
 
-        initSpeedDial: function(){
+        initQuickMenu: function(){
             ICONS_MARGIN = window.speedDialConfig.iconsMargin
             var SPEED_DIAL_ITEMS_HEIGHT = window.speedDialConfig.iconSize
             var SPEED_DIAL_ITEMS_WIDTH = window.speedDialConfig.iconSize
@@ -33,7 +33,7 @@ define([
             var ICON_IMAGE = window.speedDialConfig.iconImage
             var BACKGROUND_ICON_COLOR = window.speedDialConfig.iconImageBackground
 
-            const items = this.getSpeedDialItems()
+            const items = this.getQuickMenuItems()
             for(let i = 0; i < items.length; i++){
                 items[i].style.height = `${SPEED_DIAL_ITEMS_HEIGHT}px`
                 items[i].style.width = `${SPEED_DIAL_ITEMS_WIDTH}px`
@@ -45,7 +45,7 @@ define([
                 })
             }
 
-            const itemsImgs = this.getSpeedDialItemsImgs()
+            const itemsImgs = this.getQuickMenuItemsImgs()
             for(let i = 0; i < itemsImgs.length; i++){
                 itemsImgs[i].height = SPEED_DIAL_ITEMS_HEIGHT
                 itemsImgs[i].width = SPEED_DIAL_ITEMS_WIDTH
@@ -55,49 +55,49 @@ define([
                 })
             }
 
-            const speedDialWrapper = this.getSpeedDialWrapper()
+            const speedDialWrapper = this.getQuickMenuWrapper()
             speedDialWrapper.style.width = `${SPEED_DIAL_ITEMS_WIDTH}px`
             speedDialWrapper.style.right = `${SPEED_DIAL_LEFT_DISTANCE}px`
             speedDialWrapper.style.bottom = `${SPEED_DIAL_BOTTOM_DISTANCE}px`
 
-            const speedDialMainIconImg = this.getSpeedDialMainIconImg()
+            const speedDialMainIconImg = this.getQuickMenuMainIconImg()
             speedDialMainIconImg.style.width = SPEED_DIAL_ITEMS_WIDTH
             speedDialMainIconImg.style.height = SPEED_DIAL_ITEMS_HEIGHT
             speedDialMainIconImg.width = SPEED_DIAL_ITEMS_WIDTH
             speedDialMainIconImg.height = SPEED_DIAL_ITEMS_HEIGHT
             speedDialMainIconImg.src = ICON_IMAGE
             speedDialMainIconImg.ontouchstart = (e) => {
-                this.toggleSpeedDial()
+                this.toggleQuickMenu()
                 e.preventDefault() // Prevent "onclick" event
             }
             this.handleOuterTouchEvent()
 
-            const mainIconWrapper = this.getSpeedDialMainIcon()
+            const mainIconWrapper = this.getQuickMenuMainIcon()
             mainIconWrapper.style.background = BACKGROUND_ICON_COLOR
             mainIconWrapper.onclick = () => {
-                this.toggleSpeedDial()
+                this.toggleQuickMenu()
             }
 
-            const speedDialItemsWrapper = this.getSpeedDialItemsWrapper()
+            const speedDialItemsWrapper = this.getQuickMenuItemsWrapper()
             speedDialItemsWrapper.style.height = `${ICONS_MARGIN * (items.length + 1)}px`
         },
 
         // When click away from div in mobile, close the speed dial
         handleOuterTouchEvent: function(){
             window.addEventListener('touchstart', (e) => {
-                const speedDialWrapper = this.getSpeedDialWrapper()
+                const speedDialWrapper = this.getQuickMenuWrapper()
                 if(
                     e.path && e.path.length && e.path.length >= 3 && e.path[2] != speedDialWrapper
                 ){
-                    this.hideSpeedDialItems()
+                    this.hideQuickMenuItems()
                 }
             })
         },
         
-        showSpeedDialItems: function(){
+        showQuickMenuItems: function(){
             this.enableItemsTooltips()
 
-            const items = this.getSpeedDialItems()
+            const items = this.getQuickMenuItems()
             for(let i = 0; i < items.length; i++){
                 items[i].style.bottom = `${ICONS_MARGIN * (i + 1)}px`
             }
@@ -114,8 +114,8 @@ define([
             isOpened = true
         },
         
-        hideSpeedDialItems: function(){
-            const items = this.getSpeedDialItems()
+        hideQuickMenuItems: function(){
+            const items = this.getQuickMenuItems()
         
             for(let i = 0; i < items.length; i++){
                 items[i].style.bottom = `0px`
@@ -139,8 +139,8 @@ define([
                     }
                 }
                 else{	
-                    const speedDialItems = this.getSpeedDialItems()
-                    const speedDialItemsImgs = this.getSpeedDialItemsImgs()
+                    const speedDialItems = this.getQuickMenuItems()
+                    const speedDialItemsImgs = this.getQuickMenuItemsImgs()
                     for(let i = 0; i < speedDialItems.length; i++){
                         tooltips[speedDialItemsImgs[i].id] = tippy(speedDialItems[i], {
                             placement: 'right',
@@ -174,12 +174,12 @@ define([
             }
         },
 
-        toggleSpeedDial: function(){
+        toggleQuickMenu: function(){
             if(isOpened){
-                this.hideSpeedDialItems()
+                this.hideQuickMenuItems()
             }
             else{
-                this.showSpeedDialItems()
+                this.showQuickMenuItems()
             }
         },
         
@@ -187,27 +187,27 @@ define([
             window.open(e.target.dataset.link).focus()
         },
 
-        getSpeedDialWrapper: function(){
+        getQuickMenuWrapper: function(){
             return document.getElementById('speed-dial-wrapper')
         },
         
-        getSpeedDialItemsWrapper: function(){
+        getQuickMenuItemsWrapper: function(){
             return document.getElementById('speed-dial-items')
         },
 
-        getSpeedDialMainIcon: function(){
+        getQuickMenuMainIcon: function(){
             return document.querySelector('#speed-dial-main-icon')
         },
 
-        getSpeedDialMainIconImg: function(){
+        getQuickMenuMainIconImg: function(){
             return document.querySelector('#speed-dial-main-icon img')
         },
         
-        getSpeedDialItems: function(){
+        getQuickMenuItems: function(){
             return document.querySelectorAll('.speed-dial-item')
         },
         
-        getSpeedDialItemsImgs: function(){
+        getQuickMenuItemsImgs: function(){
             return document.querySelectorAll('#speed-dial-items .speed-dial-item img')
         },
     });

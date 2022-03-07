@@ -3,9 +3,9 @@
  * Teste
  * Copyright (C) 2019 
  * 
- * This file is part of Caio/SpeedDial.
+ * This file is part of Caio/QuickMenu.
  * 
- * Caio/SpeedDial is free software: you can redistribute it and/or modify
+ * Caio/QuickMenu is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
@@ -19,16 +19,16 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace Caio\SpeedDial\Model;
+namespace Caio\QuickMenu\Model;
 
 use Magento\Framework\Api\DataObjectHelper;
-use Caio\SpeedDial\Api\Data\ItemInterfaceFactory;
-use Caio\SpeedDial\Api\Data\ItemInterface;
+use Caio\QuickMenu\Api\Data\ItemInterfaceFactory;
+use Caio\QuickMenu\Api\Data\ItemInterface;
 
 class Item extends \Magento\Framework\Model\AbstractModel
 {
 
-    protected $_eventPrefix = 'caio_speeddial_item';
+    protected $_eventPrefix = 'caio_quickmenu_item';
     protected $itemDataFactory;
 
     protected $dataObjectHelper;
@@ -39,8 +39,8 @@ class Item extends \Magento\Framework\Model\AbstractModel
      * @param \Magento\Framework\Registry $registry
      * @param ItemInterfaceFactory $itemDataFactory
      * @param DataObjectHelper $dataObjectHelper
-     * @param \Caio\SpeedDial\Model\ResourceModel\Item $resource
-     * @param \Caio\SpeedDial\Model\ResourceModel\Item\Collection $resourceCollection
+     * @param \Caio\QuickMenu\Model\ResourceModel\Item $resource
+     * @param \Caio\QuickMenu\Model\ResourceModel\Item\Collection $resourceCollection
      * @param array $data
      */
     public function __construct(
@@ -48,8 +48,8 @@ class Item extends \Magento\Framework\Model\AbstractModel
         \Magento\Framework\Registry $registry,
         ItemInterfaceFactory $itemDataFactory,
         DataObjectHelper $dataObjectHelper,
-        \Caio\SpeedDial\Model\ResourceModel\Item $resource,
-        \Caio\SpeedDial\Model\ResourceModel\Item\Collection $resourceCollection,
+        \Caio\QuickMenu\Model\ResourceModel\Item $resource,
+        \Caio\QuickMenu\Model\ResourceModel\Item\Collection $resourceCollection,
         array $data = []
     ) {
         $this->itemDataFactory = $itemDataFactory;

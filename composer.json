@@ -1,9 +1,13 @@
 {
-    "name": "caio/module-speeddial",
+    "name": "caio/module-quickmenu",
     "description": "Teste",
     "type": "magento2-module",
     "license": "GPL-3.0",
     "authors": [
+        {
+            "name": "Caio Arrabal",
+            "email": "caio.a.1998@gmail.com"
+        },
         {
             "name": "Mage2Gen",
             "email": "info@mage2gen.com"
@@ -16,7 +20,7 @@
             "registration.php"
         ],
         "psr-4": {
-            "Caio\\SpeedDial\\": ""
+            "Caio\\QuickMenu\\": ""
         }
     }
 }

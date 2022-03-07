@@ -1,6 +1,6 @@
 <!-- ko if: isModuleEnabled() -->
-  <div id="speed-dial-wrapper" data-bind="event: { mouseleave: hideSpeedDialItems }">
-    <div id="speed-dial-main-icon" data-bind="event: { mouseover: showSpeedDialItems }">
+  <div id="speed-dial-wrapper" data-bind="event: { mouseleave: hideQuickMenuItems }">
+    <div id="speed-dial-main-icon" data-bind="event: { mouseover: showQuickMenuItems }">
       <img src="">
     </div>
 
@@ -16,5 +16,5 @@
     </div>
   </div>
 
-  <div data-bind="afterRender: initSpeedDial"></div>
+  <div data-bind="afterRender: initQuickMenu"></div>
 <!-- /ko -->

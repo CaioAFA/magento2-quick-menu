@@ -1,6 +1,6 @@
 <?php
  
-namespace Caio\SpeedDial\Model;
+namespace Caio\QuickMenu\Model;
  
 use Magento\MediaStorage\Helper\File\Storage\Database;
 use Magento\Framework\Filesystem;
@@ -32,8 +32,8 @@ class ImageUploader
         $this->uploaderFactory = $uploaderFactory;
         $this->storeManager = $storeManager;
         $this->logger = $logger;
-        $this->baseTmpPath = "speed_dial_icon/";
-        $this->basePath = "speed_dial_icon/";
+        $this->baseTmpPath = "quickmenu_icon/";
+        $this->basePath = "quickmenu_icon/";
         $this->allowedExtensions = ['jpg', 'jpeg', 'gif', 'png'];
     }
  

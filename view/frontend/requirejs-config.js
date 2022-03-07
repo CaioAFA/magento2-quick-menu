@@ -1,7 +1,7 @@
 var config = {
   map: {
     '*': {
-      '@popperjs/core': 'Caio_SpeedDial/js/libs/popper'
+      '@popperjs/core': 'Caio_QuickMenu/js/libs/popper'
     }
   }
 };

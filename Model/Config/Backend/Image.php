@@ -1,6 +1,6 @@
 <?php
 
-namespace Caio\SpeedDial\Model\Config\Backend;
+namespace Caio\QuickMenu\Model\Config\Backend;
 
 class Image extends \Magento\Config\Model\Config\Backend\Image
 {

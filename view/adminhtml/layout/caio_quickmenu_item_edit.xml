@@ -3,7 +3,7 @@
 	<update handle="styles"/>
 	<body>
 		<referenceContainer name="content">
-			<uiComponent name="caio_speeddial_item_listing"/>
+			<uiComponent name="caio_quickmenu_item_form"/>
 		</referenceContainer>
 	</body>
 </page>

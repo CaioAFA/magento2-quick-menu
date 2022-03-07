@@ -3,9 +3,9 @@
  * Teste
  * Copyright (C) 2019 
  * 
- * This file is part of Caio/SpeedDial.
+ * This file is part of Caio/QuickMenu.
  * 
- * Caio/SpeedDial is free software: you can redistribute it and/or modify
+ * Caio/QuickMenu is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
@@ -19,9 +19,9 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace Caio\SpeedDial\Controller\Adminhtml\Item;
+namespace Caio\QuickMenu\Controller\Adminhtml\Item;
 
-class Delete extends \Caio\SpeedDial\Controller\Adminhtml\Item
+class Delete extends \Caio\QuickMenu\Controller\Adminhtml\Item
 {
 
     /**
@@ -38,7 +38,7 @@ class Delete extends \Caio\SpeedDial\Controller\Adminhtml\Item
         if ($id) {
             try {
                 // init model and delete
-                $model = $this->_objectManager->create(\Caio\SpeedDial\Model\Item::class);
+                $model = $this->_objectManager->create(\Caio\QuickMenu\Model\Item::class);
                 $model->load($id);
                 $model->delete();
                 // display success message

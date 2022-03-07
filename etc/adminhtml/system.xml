@@ -6,11 +6,11 @@
 			<label>Caio</label>
 		</tab>
 
-		<section id="speed_dial" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+		<section id="quickmenu" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
 			<class>separator-top</class>
 			<label>Speed Dial</label>
 			<tab>caio</tab>
-			<resource>Caio_SpeedDial::item</resource>
+			<resource>Caio_QuickMenu::item</resource>
 
       <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
 				<label>General Configurations</label>
@@ -42,9 +42,9 @@
 
 				<field id="icon_image" translate="label" type="image" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
 					<label>Main Icon</label>
-					<backend_model>Caio\SpeedDial\Model\Config\Backend\Image</backend_model>
+					<backend_model>Caio\QuickMenu\Model\Config\Backend\Image</backend_model>
 					<comment>Allowed extensions: jpg, jpeg, gif, png, svg. You can find free icons on https://uxwing.com/ or https://www.reshot.com/.</comment>
-					<!-- <base_url type="media" scope_info="1">speed_dial/main_icon</base_url> -->
+					<!-- <base_url type="media" scope_info="1">quickmenu/main_icon</base_url> -->
 				</field>
 
         <field id="background_icon_color" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">

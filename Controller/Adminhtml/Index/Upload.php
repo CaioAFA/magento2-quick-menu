@@ -1,10 +1,10 @@
 <?php
  
-namespace Caio\SpeedDial\Controller\Adminhtml\Index;
+namespace Caio\QuickMenu\Controller\Adminhtml\Index;
  
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Backend\App\Action\Context;
-use Caio\SpeedDial\Model\ImageUploader;
+use Caio\QuickMenu\Model\ImageUploader;
  
 class Upload extends \Magento\Backend\App\Action
 {

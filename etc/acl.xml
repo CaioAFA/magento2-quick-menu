@@ -3,11 +3,11 @@
 	<acl>
 		<resources>
 			<resource id="Magento_Backend::admin">
-				<resource id="Caio_SpeedDial::item" title="item" sortOrder="10">
-					<resource id="Caio_SpeedDial::item_save" title="Save item" sortOrder="10"/>
-					<resource id="Caio_SpeedDial::item_delete" title="Delete item" sortOrder="20"/>
-					<resource id="Caio_SpeedDial::item_update" title="Update item" sortOrder="30"/>
-					<resource id="Caio_SpeedDial::item_view" title="View item" sortOrder="40"/>
+				<resource id="Caio_QuickMenu::item" title="item" sortOrder="10">
+					<resource id="Caio_QuickMenu::item_save" title="Save item" sortOrder="10"/>
+					<resource id="Caio_QuickMenu::item_delete" title="Delete item" sortOrder="20"/>
+					<resource id="Caio_QuickMenu::item_update" title="Update item" sortOrder="30"/>
+					<resource id="Caio_QuickMenu::item_view" title="View item" sortOrder="40"/>
 				</resource>
 			</resource>
 		</resources>

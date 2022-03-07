@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
   <default>
-    <speed_dial>
+    <quickmenu>
       <general>
         <enable>0</enable>
         <icon_size>55</icon_size>
         <icons_margin>65</icons_margin>
-        <left_distance>60</left_distance>
-        <bottom_distance>60</bottom_distance>
+        <left_distance>20</left_distance>
+        <bottom_distance>20</bottom_distance>
         <background_icon_color>white</background_icon_color>
       </general>
-    </speed_dial>
+    </quickmenu>
   </default>
 </config>

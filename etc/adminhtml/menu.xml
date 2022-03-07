@@ -1,9 +1,9 @@
 <?xml version="1.0" ?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
 	<menu>
-		<add id="Caio::caio_speeddial_section" title="Speed Dial" module="Caio_SpeedDial" resource="Magento_Backend::content" parent="Magento_Backend::content" sortOrder="1" />
+		<add id="Caio::caio_quickmenu_section" title="Speed Dial" module="Caio_QuickMenu" resource="Magento_Backend::content" parent="Magento_Backend::content" sortOrder="1" />
 
-		<add id="Caio_SpeedDial::caio_speeddial_item" title="Items" module="Caio_SpeedDial" resource="Magento_Backend::content" parent="Caio::caio_speeddial_section" action="caio_speeddial/item/index" />
-		<add id="Caio_SpeedDial::configurations" title="Items Config" module="Caio_SpeedDial" resource="Magento_Backend::content" parent="Caio::caio_speeddial_section" action="adminhtml/system_config/edit/section/speed_dial" />
+		<add id="Caio_QuickMenu::caio_quickmenu_item" title="Items" module="Caio_QuickMenu" resource="Magento_Backend::content" parent="Caio::caio_quickmenu_section" action="caio_quickmenu/item/index" />
+		<add id="Caio_QuickMenu::configurations" title="Items Config" module="Caio_QuickMenu" resource="Magento_Backend::content" parent="Caio::caio_quickmenu_section" action="adminhtml/system_config/edit/section/quickmenu" />
 	</menu>
 </config>

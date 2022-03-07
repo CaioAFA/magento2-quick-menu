@@ -1,10 +1,10 @@
 <?php
 
-namespace Caio\SpeedDial\Block;
+namespace Caio\QuickMenu\Block;
 
-class SpeedDial extends \Magento\Framework\View\Element\Template
+class QuickMenu extends \Magento\Framework\View\Element\Template
 {
-    const IMAGES_PATH = 'speed_dial_icon/';
+    const IMAGES_PATH = 'quickmenu_icon/';
 
     protected $itemsCollection;
 
@@ -25,7 +25,7 @@ class SpeedDial extends \Magento\Framework\View\Element\Template
 
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
-        \Caio\SpeedDial\Model\ResourceModel\Item\Collection $itemsCollection,
+        \Caio\QuickMenu\Model\ResourceModel\Item\Collection $itemsCollection,
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Framework\View\Asset\Repository $assetRepo,
@@ -38,7 +38,7 @@ class SpeedDial extends \Magento\Framework\View\Element\Template
         $this->assetRepo = $assetRepo;
     }
 
-    public function getSpeedDialItems(){
+    public function getQuickMenuItems(){
         $this->itemsCollection->setOrder('position');
         
         $items = $this->itemsCollection->getData();
@@ -48,7 +48,7 @@ class SpeedDial extends \Magento\Framework\View\Element\Template
 
         foreach($items as &$i){
             if(!isset($i['image'])){
-                $defaultImage = $this->assetRepo->getUrl("Caio_SpeedDial::image/sample_icon.png");
+                $defaultImage = $this->assetRepo->getUrl("Caio_QuickMenu::image/sample_icon.png");
                 $i['image'] = $defaultImage;
             }
             else{
@@ -64,9 +64,9 @@ class SpeedDial extends \Magento\Framework\View\Element\Template
         return json_encode($items);
     }
 
-    public function getSpeedDialConfigurations(){
+    public function getQuickMenuConfigurations(){
         $isEnabled = $this->scopeConfig->getValue(
-            'speed_dial/general/enable', 
+            'quickmenu/general/enable', 
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
         );
 
@@ -77,27 +77,27 @@ class SpeedDial extends \Magento\Framework\View\Element\Template
         }
 
         $iconSize = $this->scopeConfig->getValue(
-            'speed_dial/general/icon_size', 
+            'quickmenu/general/icon_size', 
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
         );
 
         $iconMargin = $this->scopeConfig->getValue(
-            'speed_dial/general/icons_margin', 
+            'quickmenu/general/icons_margin', 
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
         );
 
         $leftDistance = $this->scopeConfig->getValue(
-            'speed_dial/general/left_distance', 
+            'quickmenu/general/left_distance', 
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
         );
 
         $bottomDistance = $this->scopeConfig->getValue(
-            'speed_dial/general/bottom_distance', 
+            'quickmenu/general/bottom_distance', 
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
         );
 
         $iconImage = $this->scopeConfig->getValue(
-            'speed_dial/general/icon_image', 
+            'quickmenu/general/icon_image', 
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
         );
 
@@ -108,11 +108,11 @@ class SpeedDial extends \Magento\Framework\View\Element\Template
             $iconImageFullPath = $mediaPath . $iconImage;
         }
         else{
-            $iconImageFullPath = $this->assetRepo->getUrl("Caio_SpeedDial::image/sample_icon.png");;
+            $iconImageFullPath = $this->assetRepo->getUrl("Caio_QuickMenu::image/sample_icon.png");;
         }
 
         $iconImageBackground = $this->scopeConfig->getValue(
-            'speed_dial/general/background_icon_color', 
+            'quickmenu/general/background_icon_color', 
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
         );
 

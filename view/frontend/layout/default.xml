@@ -3,26 +3,26 @@
   <update handle="styles" />
 
   <head>
-    <css src="Caio_SpeedDial::css/speed_dial.css" />
-    <!-- <link src="Caio_SpeedDial::js/libs/pooper.js" />
-    <link src="Caio_SpeedDial::js/libs/tippy.js" /> -->
+    <css src="Caio_QuickMenu::css/quickmenu.css" />
+    <!-- <link src="Caio_QuickMenu::js/libs/pooper.js" />
+    <link src="Caio_QuickMenu::js/libs/tippy.js" /> -->
   </head>
 
   <body>
     <referenceContainer name="content">
       <block
-        class="Caio\SpeedDial\Block\SpeedDial"
+        class="Caio\QuickMenu\Block\QuickMenu"
         before="-"
         name="speed-dial"
-        template="Caio_SpeedDial::speed_dial.phtml"
+        template="Caio_QuickMenu::quickmenu.phtml"
       >
         <arguments>
           <argument name="jsLayout" xsi:type="array">
             <item name="components" xsi:type="array">
               <!-- Aqui, podemos adicionar vários componentes filhos -->
-              <item name="speed_dial" xsi:type="array">
-                <item name="component" xsi:type="string">Caio_SpeedDial/js/speed_dial</item>
-                <item name="displayArea" xsi:type="string">speed_dial</item>
+              <item name="quickmenu" xsi:type="array">
+                <item name="component" xsi:type="string">Caio_QuickMenu/js/quickmenu</item>
+                <item name="displayArea" xsi:type="string">quickmenu</item>
               </item>
             </item>
           </argument>

@@ -3,9 +3,9 @@
  * Teste
  * Copyright (C) 2019 
  * 
- * This file is part of Caio/SpeedDial.
+ * This file is part of Caio/QuickMenu.
  * 
- * Caio/SpeedDial is free software: you can redistribute it and/or modify
+ * Caio/QuickMenu is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
@@ -19,22 +19,22 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace Caio\SpeedDial\Model;
+namespace Caio\QuickMenu\Model;
 
 use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Caio\SpeedDial\Api\Data\ItemInterfaceFactory;
+use Caio\QuickMenu\Api\Data\ItemInterfaceFactory;
 use Magento\Framework\Reflection\DataObjectProcessor;
-use Caio\SpeedDial\Api\Data\ItemSearchResultsInterfaceFactory;
-use Caio\SpeedDial\Api\ItemRepositoryInterface;
-use Caio\SpeedDial\Model\ResourceModel\Item as ResourceItem;
+use Caio\QuickMenu\Api\Data\ItemSearchResultsInterfaceFactory;
+use Caio\QuickMenu\Api\ItemRepositoryInterface;
+use Caio\QuickMenu\Model\ResourceModel\Item as ResourceItem;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Api\ExtensionAttribute\JoinProcessorInterface;
 use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\Api\ExtensibleDataObjectConverter;
 use Magento\Store\Model\StoreManagerInterface;
-use Caio\SpeedDial\Model\ResourceModel\Item\CollectionFactory as ItemCollectionFactory;
+use Caio\QuickMenu\Model\ResourceModel\Item\CollectionFactory as ItemCollectionFactory;
 
 class ItemRepository implements ItemRepositoryInterface
 {
@@ -104,7 +104,7 @@ class ItemRepository implements ItemRepositoryInterface
      * {@inheritdoc}
      */
     public function save(
-        \Caio\SpeedDial\Api\Data\ItemInterface $item
+        \Caio\QuickMenu\Api\Data\ItemInterface $item
     ) {
         /* if (empty($item->getStoreId())) {
             $storeId = $this->storeManager->getStore()->getId();
@@ -114,7 +114,7 @@ class ItemRepository implements ItemRepositoryInterface
         $itemData = $this->extensibleDataObjectConverter->toNestedArray(
             $item,
             [],
-            \Caio\SpeedDial\Api\Data\ItemInterface::class
+            \Caio\QuickMenu\Api\Data\ItemInterface::class
         );
         
         $itemModel = $this->itemFactory->create()->setData($itemData);
@@ -153,7 +153,7 @@ class ItemRepository implements ItemRepositoryInterface
         
         $this->extensionAttributesJoinProcessor->process(
             $collection,
-            \Caio\SpeedDial\Api\Data\ItemInterface::class
+            \Caio\QuickMenu\Api\Data\ItemInterface::class
         );
         
         $this->collectionProcessor->process($criteria, $collection);
@@ -175,7 +175,7 @@ class ItemRepository implements ItemRepositoryInterface
      * {@inheritdoc}
      */
     public function delete(
-        \Caio\SpeedDial\Api\Data\ItemInterface $item
+        \Caio\QuickMenu\Api\Data\ItemInterface $item
     ) {
         try {
             $itemModel = $this->itemFactory->create();

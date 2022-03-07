@@ -3,9 +3,9 @@
  * Teste
  * Copyright (C) 2019 
  * 
- * This file is part of Caio/SpeedDial.
+ * This file is part of Caio/QuickMenu.
  * 
- * Caio/SpeedDial is free software: you can redistribute it and/or modify
+ * Caio/QuickMenu is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
@@ -19,7 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace Caio\SpeedDial\Model\ResourceModel;
+namespace Caio\QuickMenu\Model\ResourceModel;
 
 class Item extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {
@@ -31,6 +31,6 @@ class Item extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      */
     protected function _construct()
     {
-        $this->_init('caio_speeddial_item', 'item_id');
+        $this->_init('caio_quickmenu_item', 'item_id');
     }
 }

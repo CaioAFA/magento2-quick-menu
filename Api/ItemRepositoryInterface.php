@@ -3,9 +3,9 @@
  * Teste
  * Copyright (C) 2019 
  * 
- * This file is part of Caio/SpeedDial.
+ * This file is part of Caio/QuickMenu.
  * 
- * Caio/SpeedDial is free software: you can redistribute it and/or modify
+ * Caio/QuickMenu is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
@@ -19,7 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace Caio\SpeedDial\Api;
+namespace Caio\QuickMenu\Api;
 
 use Magento\Framework\Api\SearchCriteriaInterface;
 
@@ -28,18 +28,18 @@ interface ItemRepositoryInterface
 
     /**
      * Save item
-     * @param \Caio\SpeedDial\Api\Data\ItemInterface $item
-     * @return \Caio\SpeedDial\Api\Data\ItemInterface
+     * @param \Caio\QuickMenu\Api\Data\ItemInterface $item
+     * @return \Caio\QuickMenu\Api\Data\ItemInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function save(
-        \Caio\SpeedDial\Api\Data\ItemInterface $item
+        \Caio\QuickMenu\Api\Data\ItemInterface $item
     );
 
     /**
      * Retrieve item
      * @param string $itemId
-     * @return \Caio\SpeedDial\Api\Data\ItemInterface
+     * @return \Caio\QuickMenu\Api\Data\ItemInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function getById($itemId);
@@ -47,7 +47,7 @@ interface ItemRepositoryInterface
     /**
      * Retrieve item matching the specified criteria.
      * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
-     * @return \Caio\SpeedDial\Api\Data\ItemSearchResultsInterface
+     * @return \Caio\QuickMenu\Api\Data\ItemSearchResultsInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function getList(
@@ -56,12 +56,12 @@ interface ItemRepositoryInterface
 
     /**
      * Delete item
-     * @param \Caio\SpeedDial\Api\Data\ItemInterface $item
+     * @param \Caio\QuickMenu\Api\Data\ItemInterface $item
      * @return bool true on success
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function delete(
-        \Caio\SpeedDial\Api\Data\ItemInterface $item
+        \Caio\QuickMenu\Api\Data\ItemInterface $item
     );
 
     /**

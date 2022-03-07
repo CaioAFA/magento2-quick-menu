@@ -3,9 +3,9 @@
  * Teste
  * Copyright (C) 2019 
  * 
- * This file is part of Caio/SpeedDial.
+ * This file is part of Caio/QuickMenu.
  * 
- * Caio/SpeedDial is free software: you can redistribute it and/or modify
+ * Caio/QuickMenu is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
@@ -19,7 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace Caio\SpeedDial\Controller\Adminhtml\Item;
+namespace Caio\QuickMenu\Controller\Adminhtml\Item;
 
 use Magento\Framework\Exception\LocalizedException;
 
@@ -53,7 +53,7 @@ class Save extends \Magento\Backend\App\Action
         if ($data) {
             $id = $this->getRequest()->getParam('item_id');
         
-            $model = $this->_objectManager->create(\Caio\SpeedDial\Model\Item::class)->load($id);
+            $model = $this->_objectManager->create(\Caio\QuickMenu\Model\Item::class)->load($id);
             if (!$model->getId() && $id) {
                 $this->messageManager->addErrorMessage(__('This Item no longer exists.'));
                 return $resultRedirect->setPath('*/*/');
@@ -71,7 +71,7 @@ class Save extends \Magento\Backend\App\Action
             try {
                 $model->save();
                 $this->messageManager->addSuccessMessage(__('You saved the Item.'));
-                $this->dataPersistor->clear('caio_speeddial_item');
+                $this->dataPersistor->clear('caio_quickmenu_item');
         
                 if ($this->getRequest()->getParam('back')) {
                     return $resultRedirect->setPath('*/*/edit', ['item_id' => $model->getId()]);
@@ -83,7 +83,7 @@ class Save extends \Magento\Backend\App\Action
                 $this->messageManager->addExceptionMessage($e, __('Something went wrong while saving the Item.'));
             }
         
-            $this->dataPersistor->set('caio_speeddial_item', $data);
+            $this->dataPersistor->set('caio_quickmenu_item', $data);
             return $resultRedirect->setPath('*/*/edit', ['item_id' => $this->getRequest()->getParam('item_id')]);
         }
         return $resultRedirect->setPath('*/*/');
