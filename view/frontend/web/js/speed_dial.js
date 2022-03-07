@@ -7,7 +7,6 @@ define([
     const tooltips = {}
 
     var ICONS_MARGIN
-    const IS_MOBILE = window.screen.width < 1024 ? true : false
     const ANIMATION_DURATION = 500 // Milliseconds
     var isOpened = false
 
@@ -103,16 +102,14 @@ define([
                 items[i].style.bottom = `${ICONS_MARGIN * (i + 1)}px`
             }
 
-            if(IS_MOBILE) {
-                // Wait until the animation ends
-                setTimeout(() => {
-                    const tooltipsKeys = Object.keys(tooltips)
-                    for(let i = 0; i < tooltipsKeys.length; i++){
-                        const key = tooltipsKeys[i]
-                        tooltips[key].show()
-                    }
-                }, ANIMATION_DURATION)
-            }
+            // Wait until the animation ends to open the tooltips
+            setTimeout(() => {
+                const tooltipsKeys = Object.keys(tooltips)
+                for(let i = 0; i < tooltipsKeys.length; i++){
+                    const key = tooltipsKeys[i]
+                    tooltips[key].show()
+                }
+            }, ANIMATION_DURATION)
     
             isOpened = true
         },

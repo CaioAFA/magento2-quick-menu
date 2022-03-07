@@ -1,12 +1,9 @@
 <?xml version="1.0" ?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
 	<menu>
-		<add id="Caio::top_level" title="Caio" module="Caio_SpeedDial" sortOrder="9999" resource="Magento_Backend::content" />
-
-		<add id="Caio::caio_speeddial_section" title="Speed Dial" module="Caio_SpeedDial" resource="Magento_Backend::content" parent="Caio::top_level" sortOrder="1" />
+		<add id="Caio::caio_speeddial_section" title="Speed Dial" module="Caio_SpeedDial" resource="Magento_Backend::content" parent="Magento_Backend::content" sortOrder="1" />
 
 		<add id="Caio_SpeedDial::caio_speeddial_item" title="Items" module="Caio_SpeedDial" resource="Magento_Backend::content" parent="Caio::caio_speeddial_section" action="caio_speeddial/item/index" />
 		<add id="Caio_SpeedDial::configurations" title="Items Config" module="Caio_SpeedDial" resource="Magento_Backend::content" parent="Caio::caio_speeddial_section" action="adminhtml/system_config/edit/section/speed_dial" />
-
 	</menu>
 </config>
