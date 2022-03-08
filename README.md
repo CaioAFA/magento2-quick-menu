@@ -12,4 +12,4 @@ php bin/magento setup:upgrade # Required command
 php bin/magento cache:clean # Clean cache
 ```
 
-- Access the admin panel, go to **Content** section and configure que Quick Menu.
+- Access the admin panel, go to **Content** section and configure tue Quick Menu.
