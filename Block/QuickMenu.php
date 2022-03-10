@@ -4,8 +4,11 @@ namespace Caio\QuickMenu\Block;
 
 class QuickMenu extends \Magento\Framework\View\Element\Template
 {
-    const IMAGES_PATH = 'quickmenu_icon/';
+    const ICON_PATH = 'quickmenu_icon/';
 
+    /**
+     * @var \Caio\QuickMenu\Model\ResourceModel\Item\Collection
+     */
     protected $itemsCollection;
 
     /**
@@ -53,7 +56,7 @@ class QuickMenu extends \Magento\Framework\View\Element\Template
             }
             else{
                 $imgInfo = json_decode($i['image'], true);
-                $i['image'] = $mediaPath . self::IMAGES_PATH . $imgInfo[0]['name'];
+                $i['image'] = $mediaPath . self::ICON_PATH . $imgInfo[0]['name'];
             }
 
             if(!$i['background']){
