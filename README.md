@@ -13,3 +13,12 @@ php bin/magento cache:clean # Clean cache
 ```
 
 - Access the admin panel, go to **Content** section and configure the Quick Menu.
+
+## Functions
+- Add as many icons you want
+
+- Choose icons images, background color (if they're transparent), redirect link, text and position
+
+- Configure the main icon size, image and background color
+
+- Configure margin between icons, left / bottom screen distance

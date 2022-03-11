@@ -149,7 +149,7 @@ define([
                         })
                     }
                 }
-            }, ANIMATION_DURATION - 400);            
+            }, ANIMATION_DURATION);            
         },
 
         disableItemsTooltips: function(){

@@ -29,3 +29,5 @@
 "It works only with transparent images","Funciona apenas para ícones com fundo transparente"
 "File can not be saved to the destination folder.","O arquivo não pôde ser salvo na pasta destino."
 "Something went wrong while saving the file(s).","Algo deu errado ao salvar o arquivo."
+"You deleted the Item.","Você deletou o item."
+"It works only with transparent images. Tip: if the image has a colored background, use 'transparent'.","Funciona apenas com imagens transparentes. Dica: se a imagem já possuir um fundo colorido, utilize 'transparent'."

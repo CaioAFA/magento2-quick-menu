@@ -46,6 +46,7 @@
 				<item name="config" xsi:type="array">
 					<item name="source" xsi:type="string">item</item>
 					<item name="placeholder" xsi:type="string">Ex.: red / blue / #FFFFFF</item>
+					<item name="notice" xsi:type="string" translate="true">It works only with transparent images. Tip: if the image has a colored background, use 'transparent'.</item>
 				</item>
 			</argument>
 			<settings>
