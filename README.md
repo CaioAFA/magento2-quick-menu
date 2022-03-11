@@ -18,7 +18,7 @@ php bin/magento cache:clean # Clean cache
 
 - Access the admin panel, go to **Content** section and configure the Quick Menu.
 
-<img src="https://github.com/CaioAFA/magento2-quick-menu/blob/master/preview/menu.png?raw=true" width="400" height="250">
+<img src="https://github.com/CaioAFA/magento2-quick-menu/blob/master/preview/menu.png?raw=true" width="600" height="400">
 
 <br>
 
