@@ -3,7 +3,7 @@ This module creates a Quick Menu on the Magento 2 frontend.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-<img src="https://github.com/CaioAFA/magento2-quick-menu/blob/master/preview/image.png?raw=true" width="800" height="500">
+<img src="https://github.com/CaioAFA/magento2-quick-menu/blob/master/preview/preview.png?raw=true" width="800" height="500">
 
 <br>
 
@@ -17,6 +17,8 @@ php bin/magento cache:clean # Clean cache
 ```
 
 - Access the admin panel, go to **Content** section and configure the Quick Menu.
+
+<img src="https://github.com/CaioAFA/magento2-quick-menu/blob/master/preview/menu.png?raw=true" width="400" height="250">
 
 <br>
 
