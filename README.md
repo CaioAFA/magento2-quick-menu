@@ -30,3 +30,5 @@ php bin/magento cache:clean # Clean cache
 - Configure the main icon size, image and background color
 
 - Configure margin between icons, left / bottom screen distance
+
+**OBS:** Don't forget to clean cache after making changes!
