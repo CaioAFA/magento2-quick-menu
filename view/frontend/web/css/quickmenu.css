@@ -1,4 +1,4 @@
-#speed-dial-wrapper{
+#quick-menu-wrapper{
 	position: fixed;
 	z-index: 99999999;
 
@@ -8,7 +8,7 @@
 	width: 60px;
 }
 
-#speed-dial-main-icon{
+#quick-menu-main-icon{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -17,19 +17,19 @@
 	border-radius: 50px;
 
 	z-index: 20;
-
-	cursor: pointer;
 }
 
-#speed-dial-main-icon img{
+#quick-menu-main-icon img{
 	border-radius: 100px;
+	cursor: pointer;
+	overflow: hidden;
 }
 
-#speed-dial-items{
+#quick-menu-items{
 	position: relative;
 }
 
-.speed-dial-item{
+.quick-menu-item{
 	position: absolute;
 	right: 0px;
 	bottom: 0px;
@@ -43,7 +43,7 @@
 	transition: .5s bottom ease;
 }
 
-.speed-dial-item-img{
+.quick-menu-item-img{
 	z-index: 10;
 	border-radius: 50px;
 }

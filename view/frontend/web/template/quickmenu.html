@@ -1,16 +1,16 @@
 <!-- ko if: isModuleEnabled() -->
-  <div id="speed-dial-wrapper" data-bind="event: { mouseleave: hideQuickMenuItems }">
-    <div id="speed-dial-main-icon" data-bind="event: { mouseover: showQuickMenuItems }">
+  <div id="quick-menu-wrapper" data-bind="event: { mouseleave: hideQuickMenuItems }">
+    <div id="quick-menu-main-icon" data-bind="event: { mouseover: showQuickMenuItems }">
       <img src="">
     </div>
 
-    <div id="speed-dial-items">
+    <div id="quick-menu-items">
       <!-- ko foreach: { data: getItems(), as: 'item' } -->
         <div
           attr="'data-text': item.text"
-          class="speed-dial-item"
+          class="quick-menu-item"
         >
-          <img attr="id: 'speed-dial-item-' + item.item_id, src: item.image, alt: item.text, 'data-link': item.redirect_link, 'data-background': item.background" class="speed-dial-item-img">
+          <img attr="id: 'quick-menu-item-' + item.item_id, src: item.image, alt: item.text, 'data-link': item.redirect_link, 'data-background': item.background" class="quick-menu-item-img">
         </div>
       <!-- /ko -->
     </div>

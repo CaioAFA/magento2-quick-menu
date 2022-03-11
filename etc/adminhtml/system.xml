@@ -8,7 +8,7 @@
 
 		<section id="quickmenu" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
 			<class>separator-top</class>
-			<label>Speed Dial</label>
+			<label>Quick Menu</label>
 			<tab>caio</tab>
 			<resource>Caio_QuickMenu::item</resource>
 
